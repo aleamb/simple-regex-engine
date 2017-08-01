@@ -1,0 +1,14 @@
+digraph g{
+  rankdir=LR;
+  a [label="Análisis léxico",shape=box,fillcolor="burlywood",style="filled,rounded"];
+  b [label="Análisis sintáctico",shape=box,fillcolor="burlywood",style="filled,rounded"];
+  d [label="Generación AFD",shape=box,fillcolor="burlywood",style="filled,rounded"];
+  e [label="Objeto Regex",shape=box,fillcolor="gray",style="filled,rounded"];
+  c [label="Generación AFND",shape=box,fillcolor="burlywood",style="filled,rounded"];
+  
+a -> b [label="tokens"];
+b -> c [label="árbol sintáctico"];
+c -> d [label="AFND"];
+d -> e [label="AFD"];
+
+}
