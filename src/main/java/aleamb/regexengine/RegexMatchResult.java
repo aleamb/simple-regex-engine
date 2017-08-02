@@ -14,33 +14,33 @@ package aleamb.regexengine;
 
 public class RegexMatchResult {
 
-	private int position = 0;
+    private int position = 0;
 
-	private int matchStartPosition = -1;
-	private int matchLength = 0;
+    private int matchStartPosition = -1;
+    private int matchLength = 0;
 
-	public int getPosition() {
-		return position;
-	}
+    public int getPosition() {
+        return position;
+    }
 
-	public void setPosition(int position) {
-		this.position = position;
-	}
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
-	public int getMatchStartPosition() {
-		return matchStartPosition;
-	}
+    public int getMatchStartPosition() {
+        return matchStartPosition;
+    }
 
-	public void setMatchStartPosition(int matchStartPosition) {
-		this.matchStartPosition = matchStartPosition;
-	}
+    public void setMatchStartPosition(int matchStartPosition) {
+        this.matchStartPosition = matchStartPosition;
+    }
 
-	public int getMatchLength() {
-		return matchLength;
-	}
+    public int getMatchLength() {
+        return matchLength;
+    }
 
-	public void setMatchLength(int matchLength) {
-		this.matchLength = matchLength;
-	}
+    public void setMatchLength(int matchLength) {
+        this.matchLength = matchLength;
+    }
 
 }

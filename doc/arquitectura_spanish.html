@@ -1,0 +1,1319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0102)http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="./arquitectura_spanish_files/embedded-m-prod-v15015099.css">  
+<style>  body, body.wikipage, body.has-ws-nav.wikipage, body #ws-nav ul.nav-tabs #ws-nav-wiki.active { background-color:#fccf2d ; }  ul#main-tools li a,ul#secondary-tools li a, div#top-content a, #ws-nav ul.nav-tabs #ws-nav-wiki.active a { color:#47375A ; }  ul#main-tools, input#input-search, body.login table.inner, body.login #standalone-login table.inner, body.login table.inner td.table-col-2, div.workspace-panel-outer { border-color:#FABD24 ; }  div#page-toolbar, body.login table.inner, #workspace-header, body.has-ws-nav #page-footer, body.login.has-ws-nav #page-footer, body.has-ws-nav.login, div#page-footer, div#page-footer .footer { background-color:#FABD24 ; }  h1.pagetitle { color:#47375A ; }  td#page-col-2, div#page-bottom-toolbar { background-color:#FFFFFF ; }  div#page-footer .content div { color:#222 ; }  div#page-footer div.content a, #print_link { color:#1D3D35 ; }  body.has-ws-nav #page-footer { border-color:#1D3D35 ; }  .wikicontext-module .header { border-color:#FEE9A0 ; }  .wikicontext-module .header { background-color:#FEE9A0 ; }  .wikicontext-module .header { color:#000 ; }  div.comments-header { background-color:#FEE9A0 ; }  #ws-nav, #workspace-header { background-color:#FABD24 ; }  #ws-nav ul.nav-tabs li { background-color:#FEE9A0 ; }  #ws-nav ul.nav-tabs li a, #page-toolbar-inner div a { color:#000 ; }  div#view-tab.active { background-image: url(/theme_image.php?seg=l&colortime=1434282265) } div#page-toolbar-inner { background-image: url(/theme_image.php?seg=m&colortime=1434282265) } div#page-toolbar { background-image: url(/theme_image.php?seg=n&colortime=1434282265) } td#page-col-1 { background-image: url(/theme_image.php?seg=i&colortime=1434282265) } td#page-col-3 { background-image: url(/theme_image.php?seg=j&colortime=1434282265) } div#page-side-toolbar div.header { background-image: url(/theme_image.php?seg=c&colortime=1434282265) } div#page-side-toolbar { background-image: url(/theme_image.php?seg=b&colortime=1434282265) } div#page-side-toolbar ul { background-image: url(/theme_image.php?seg=a&colortime=1434282265) } div#page-footer .header .lt { background-image: url(/theme_image.php?seg=f&colortime=1434282265) } div#page-footer .header .rt { background-image: url(/theme_image.php?seg=h&colortime=1434282265) } div#page-footer .header { background-image: url(/theme_image.php?seg=g&colortime=1434282265) } div#page-footer .footer .lt { background-image: url(/theme_image.php?seg=e&colortime=1434282265) } div#page-footer .footer .rt { background-image: url(/theme_image.php?seg=d&colortime=1434282265) } div#edit-tab.active { background-image: url(/theme_image.php?seg=k&colortime=1434282265) } div#view-tab { background-image: url(/theme_image.php?seg=o&colortime=1434282265) } body.has-ws-nav #ws-nav ul.nav-tabs { background-image: url(/theme_image.php?seg=v&colortime=1434282265) } body.has-ws-nav #ws-nav ul.nav-tabs.active-tab-wiki { background-image: url(/theme_image.php?seg=p&colortime=1434282265) } body.has-ws-nav #ws-nav ul.nav-tabs.first-tab-active-not-wiki { background-image: url(/theme_image.php?seg=r&colortime=1434282265) } body.has-ws-nav #ws-nav ul.nav-tabs li { background-image: url(/theme_image.php?seg=w&colortime=1434282265) } body.has-ws-nav #ws-nav ul.nav-tabs li.active { background-image: url(/theme_image.php?seg=t&colortime=1434282265) } body.has-ws-nav #ws-nav ul.nav-tabs li.next-active { background-image: url(/theme_image.php?seg=s&colortime=1434282265) } body.has-ws-nav #ws-nav ul.nav-tabs li.last { background-image: url(/theme_image.php?seg=x&colortime=1434282265) } body.has-ws-nav #ws-nav ul.nav-tabs li.last-active { background-image: url(/theme_image.php?seg=u&colortime=1434282265) } body.has-ws-nav #ws-nav ul.nav-tabs #ws-nav-wiki.active { background-image: url(/theme_image.php?seg=q&colortime=1434282265) } div#page-bottom-toolbar { background:none; } body.wikistyle { background-color:#FFFFFF !important } #comments .comments-header .corner4px { visibility: hidden; } #comments .comments-header { border-radius:4px; } </style><title></title>
+<!--<base target="_top">--><base href="." target="_top">
+</head>
+<body class="wikistyle chrome chrome57">
+<h1>Motor de regexp simplificadas</h1>
+<br>
+<div id="displaycontent">
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a class="pbTOC" name="Índice"></a>Índice</h2>
+<p>&nbsp;</p>
+<p></p><table style="background:transparent;border:none;margin:0;padding:0"><tbody><tr style="background:transparent;border:none;margin:0;padding"><td style="background:transparent;border:none;margin:0;padding"><div class="toc"><ol type="1"><ol type="a"><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Índice">Índice</a></li><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Característicasregexpsoportadas">Características regexp soportadas.</a></li><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Uso">Uso</a><ol type="i"><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#EjemplodeusoObtenernúmerosenuntexto">Ejemplo de uso. Obtener números en un texto:</a></li></ol></li><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Arquitectura">Arquitectura.</a><ol type="i"><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Vistazogeneral">Vistazo general.</a></li><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Parseodelaexpresiónregular">Parseo de la expresión regular.</a><ol type="1"><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Gramática">Gramática.</a></li><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Análisisléxicodelaexpresiónregular">Análisis léxico de la expresión regular</a></li><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Análisissintácticodelaexpresiónregular">Análisis sintáctico de la expresión regular.</a></li><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Generacióndelárbolsintáctico">Generación del árbol sintáctico</a></li></ol></li><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Autómatas">Autómatas.</a><ol type="1"><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Estructuradedatosparaelautómatanbsp">Estructura de datos para el autómata&nbsp;</a></li><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#GeneracióndelautómatafinitonodeterministaAFND">Generación del autómata finito no determinista (AFND).</a></li></ol><ol type="1"><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#GeneracióndelautómatafinitodeterministaAFD">Generación del autómata finito determinista (AFD)</a></li></ol></li><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Ejecucióndelaregexp">Ejecución de la regexp</a></li><li><a href="http://canalprogramacion.pbworks.com/w/page/83760130/Motor%20de%20regexp%20simplificadas?mode=embedded#Consideracionesfinales">Consideraciones finales.</a></li></ol></li></ol></ol></div></td></tr></tbody></table><br clear="left"><p></p>
+<p>&nbsp;</p>
+<p>Implementación de un motor de expresiones regulares (en adelante, regexp) usando Java 6.0</p>
+<p>&nbsp;</p>
+<p>La estrategia de diseño elegida ha sido la construcción de un Autómata finito no determinista, a partir de la regexp, y su posterior conversión a Autómata finito determinista para la ejecución de la misma.&nbsp;</p>
+<p>Para construir los autómatas se parte de un árbol sintáctico construido tras un análisis léxico-sintáctico de la regexp. El análisis de la sintaxis se realiza mediante la implementación de un parser descendente-predictivo-recursivo.</p>
+<p>&nbsp;</p>
+<p>La aplicación está implementada con Java 6.0 y se puede construir vía maven. Se incluyen algunos test de prueba. El proyecto sólo tiene tres dependencias:</p>
+<p>&nbsp;</p>
+<p>* sfl4j-log4j 1.7.7 para logging. Principalmente mostrar en texto la estructura de los autómatas</p>
+<p>* Apache Commons IO 2.4, usado sólo en los tests.&nbsp;</p>
+<p>* JUnit 4.4 para tests.</p>
+<p>&nbsp;</p>
+<p><a href="http://canalprogramacion.pbworks.com/w/file/83777218/regex-engine.zip">Descargar proyecto.</a></p>
+<p>&nbsp;</p>
+<p>Para construirlo, ejecutar</p>
+<p>&nbsp;</p>
+<pre>mvn package
+</pre>
+<p>&nbsp;</p>
+<p>Las imágenes utilizadass en este artículo han sido generadas usando el lenguaje DOT de Graphviz. Las clases que representan los autómatas y el árbol sintáctico tienen métodos toString() que generan estos datos.</p>
+<p>Para ver este salida, establecer el nivel a DEBUG en el Log raíz configurado en el fichero fichero log4j.properties.</p>
+<p>Se puede renderizar estos gráficos con la herramienta dot, incluída en el paquete graphviz, o con esta <a href="http://graphviz-dev.appspot.com/">herramienta online.</a></p>
+<p>&nbsp;</p>
+<p>No se profundizará mucho en la teoría de autómatas y lenguajes formales, sólo se cubrirá lo necesario para entender la arquitectura. Para ampliar información, nada mejor que las siguientes referencias:</p>
+<p>&nbsp;</p>
+<ul>
+<li><span style="font-size:13px;line-height:1.5em;">Compiladores: principios, técnicas y herramientas	(aka "El libro del dragón") (Alfred V. Aho, Monica S. Lam, Ravi Sethi y Jeffrey D. Ullman)&nbsp;</span><span style="font-size:13px;line-height:1.5em;">ISBN 978-970-26-1133-2&nbsp;</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">Introducción a la teoría de autómatas, lenguajes y computación. (John E. Hopcroft, Rajeev Motwani and Jeffrey D.)&nbsp;</span><span style="font-size:13px;line-height:1.5em;">ISBN 978-84-7829-088-8</span></li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a class="pbTOC" name="Característicasregexpsoportadas"></a>Características regexp soportadas.</h2>
+<p>&nbsp;</p>
+<table style="width:40%;" border="0">
+<tbody>
+<tr>
+<td colspan="2">Caracteres&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td style="width:50px;">x</td>
+<td>El carácter x&nbsp;</td>
+</tr>
+<tr>
+<td>\t&nbsp;</td>
+<td>Tabulación.</td>
+</tr>
+<tr>
+<td>\s&nbsp;</td>
+<td>Espacio en blanco.&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table style="width:40%;" border="0">
+<tbody>
+<tr>
+<td colspan="2">Clases de caracteres.&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td style="width:50px;">[abc]&nbsp;&nbsp;</td>
+<td>Uno de los caracteres entre corchetes.&nbsp;</td>
+</tr>
+<tr>
+<td>[a-z]&nbsp;</td>
+<td>Un rango de caracteres desde la a hasta la z (ambos incluídos)&nbsp;</td>
+</tr>
+<tr>
+<td>[a-zA-Z]&nbsp;</td>
+<td>Un rango de caracteres desde la a hasta la z o desde la A hasta la Z (ambos incluídos)&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<table style="width:40%;" border="0">
+<tbody>
+<tr>
+<td colspan="2">Cuantificadores.&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td style="width:50px;">*&nbsp;</td>
+<td>Cero o más veces.&nbsp;</td>
+</tr>
+<tr>
+<td>+&nbsp;</td>
+<td>Una o más veces.&nbsp;</td>
+</tr>
+<tr>
+<td>?&nbsp;</td>
+<td>Cero o una vez.&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<table style="width:40%;" border="0">
+<tbody>
+<tr>
+<td colspan="2">Operadores&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td style="width:50px;">|&nbsp;</td>
+<td>Alternativa OR&nbsp;</td>
+</tr>
+<tr>
+<td>(X)&nbsp;</td>
+<td>Agrupación (cambio de orden de precedencia)&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<table style="width:40%;" border="0">
+<tbody>
+<tr>
+<td colspan="2">Caracteres especiales&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td style="width:50px;">\x&nbsp;</td>
+<td>Escapa carácter x&nbsp;</td>
+</tr>
+<tr>
+<td>.&nbsp;</td>
+<td>Cualquier carácter imprimible (Unicode)&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Orden de precedencia (de mayor a menor)</p>
+<p>&nbsp;</p>
+<ol>
+<li><span style="font-size:13px;line-height:1.5em;">(EXPR) Agrupación de expresiónx</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">x (Carácter x)</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">Cuantificador (*, + , ?)&nbsp;</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">Operador OR</span></li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a class="pbTOC" name="Uso"></a>Uso</h2>
+<h2><a class="pbTOC" name="nbsp"></a><span style="font-size:13px;line-height:1.5em;">&nbsp;</span></h2>
+<p>Las expresiones regulares serán especificadas en un <em>String</em> y debe ser compiladas antes de poder usarlas. La regexp se ejecutará sobre un buffer de char que contiene el texto.</p>
+<p>&nbsp;</p>
+<p>El resultado de la búsqueda puede ser devuelto a un objeto tipo <em>RegexMatchResult</em> donde se almacenarán las posiciones de comienzo y longitud de las coincidencias. Las posiciones son indexadas desde cero.</p>
+<p>&nbsp;</p>
+<p>El motor expone tres clases principales:</p>
+<p>&nbsp;</p>
+<ul>
+<li><strong style="font-family:inherit;font-style:inherit;line-height:1.5em;">RegexEngine</strong><span style="font-size:13px;line-height:1.5em;">. Clase principal. Se usará su método </span><em style="font-family:inherit;font-weight:inherit;line-height:1.5em;">compile</em><span style="font-size:13px;line-height:1.5em;"> para obtener un objeto tipo Regex.</span></li>
+<li><strong style="font-family:inherit;font-style:inherit;line-height:1.5em;">Regex</strong><span style="font-size:13px;line-height:1.5em;">. Objeto que representa la expresión regular compilada. Se usará su método </span><em style="font-family:inherit;font-weight:inherit;line-height:1.5em;">match</em><span style="font-size:13px;line-height:1.5em;"> para enfrentar la regexp a un texto. Retornará <em>true</em> si ha encontrado alguna coincidencia. Opcionalmente puede recibir un objeto tipo </span><em style="font-family:inherit;font-weight:inherit;line-height:1.5em;">RegexMatchResult</em><span style="font-size:13px;line-height:1.5em;"> con información sobre la coincidencia encontrada.&nbsp;</span></li>
+<li><strong style="font-family:inherit;font-style:inherit;line-height:1.5em;">RegexMatchResult</strong><span style="font-size:13px;line-height:1.5em;">. Objecto con información sobre posición y longitud de la coincidencia encontrada. Además, este objeto tiene un atributo llamado </span><em style="font-family:inherit;font-weight:inherit;line-height:1.5em;">position</em><span style="font-size:13px;line-height:1.5em;"> que indica al motor desde qué posición del texto debe comenzar la búsqueda.</span></li>
+</ul>
+<p>&nbsp;</p>
+<p>Es importante resaltar que el comportamiento de este motor es tipo ''eager'', es decir, en caso de expresiones tipo OR, como <em>(a|b)</em>, el motor probará la primera de las expresiones alternadas y, en caso de no cumplirse, reinicirá el estado y probará la alternativa desde la última posición del texto que hay asido válida (retorna al principio si no se ha encontrado ningina coincidencia antes)</p>
+<p>&nbsp;</p>
+<p>Cuando se encuentra una coincidencia, el análisis se detiene y el método <em>match</em> retornará true. Para continuar se debe especificar en el objeto <em>RegexMatchResult</em> la posición donde comenzar de nuevo y volver a llamar con esa nueva posición a <em>match.</em></p>
+<p><span style="font-size:13px;line-height:1.5em;">&nbsp;</span></p>
+<h3><a class="pbTOC" name="EjemplodeusoObtenernúmerosenuntexto"></a>Ejemplo de uso. Obtener números en un texto:</h3>
+<p>&nbsp;</p>
+<pre>package es.chathispano.canalprogramacion.regexengine.tests;
+
+import java.text.MessageFormat;
+
+import es.chathispano.canalprogramacion.regexengine.Regex;
+import es.chathispano.canalprogramacion.regexengine.RegexEngine;
+import es.chathispano.canalprogramacion.regexengine.RegexMatchResult;
+
+public class Example {
+
+&nbsp;&nbsp;&nbsp; public static void main(String[] args) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// texto a comprobar
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String text = "kjdsk65sdksdk78odla98dasdf90dsakdsj";
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// buscar números en el texo
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regex regex = RegexEngine.compile("[0-9]+");
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// almacenar resultados de cada búsqueda
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RegexMatchResult regexMatchResult = new RegexMatchResult();
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// preparar input
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char buffer[] = text.toCharArray();
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// meintras encuentre números...
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (regex.match(buffer, regexMatchResult)) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int start = regexMatchResult.getMatchStartPosition();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int length = regexMatchResult.getMatchLength();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(MessageFormat.format("Encontrada coincidencia en posicion {0}. Texto que coincide: {1}",
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start, text.substring(start, start + length)));
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// comenzar desde la última coincidencia
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;regexMatchResult.setPosition(start + length);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp; }
+}
+
+</pre>
+<p>Salida (posiciones desde columna cero):</p>
+<p>&nbsp;</p>
+<p></p><pre>Encontrada coincidencia en posición 5. Texto que coincide: 65
+Encontrada coincidencia en posición 13. Texto que coincide: 78
+Encontrada coincidencia en posición 19. Texto que coincide: 98
+Encontrada coincidencia en posición 26. Texto que coincide: 90
+</pre><p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a class="pbTOC" name="Arquitectura"></a>Arquitectura.</h2>
+<p>&nbsp;</p>
+<h3><a class="pbTOC" name="Vistazogeneral"></a>Vistazo general.</h3>
+<p>&nbsp;</p>
+<p>El núcleo central de la aplicación reside en construir un autómata finito determinista, el cual es ejecutado por el objeto Regex. Recordar que un lenguaje regular, que es el tipo de lenguaje que describen las expresiones regulares, puede ser reconocido por un autómata finito determinista.</p>
+<p>&nbsp;</p>
+<p>Diferenciamos dos partes a la hora de describir la aplicación:</p>
+<p>&nbsp;</p>
+<ol>
+<li><span style="font-size:13px;">Compilación regexp.</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">Ejecución de la regexp contra un texto.</span></li>
+</ol>
+<p>&nbsp;</p>
+<p>Dada una regexp como<em> java.lang.String</em> se procederá a seguir los siguentes pasos hasta su compilación en un objeto de tipo <em>Regex</em></p>
+<p>&nbsp;</p>
+<ol>
+<li><span style="font-size:13px;line-height:1.5em;">Análisis léxico de la regexp, obteniendo las piezas sintácticas (tokens) mínimas.</span></li>
+<li><span style="line-height:1.5em;">Análisis sintáctico de la regexp. Revisa que la regexp esté bien&nbsp;</span>construida<span style="line-height:1.5em;">&nbsp;y construye el árbol de nodos sintácticos.</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">Construcción de autómata no determinista (AFND) a partir del árbol sintáctico. Para ello se siguen los criterios de Thompson. En esta parte también se realiza cierto análisis semántico, sobre todo en lo que concierne a los rangos.</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">Conversión del autómata no determinista en uno determinista (AFD) Se usa el Algoritmo de Construcción de Subconjuntos.</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">Se almacena el autómata determinista en una instancia del objeto <em>Regex</em>.</span></li>
+</ol>
+<p>&nbsp;</p>
+<p>Dada una regexp compilada en un objeto <em>Regex,</em>&nbsp;se realizan los siguientes pasos en su ejecución contra un texto:</p>
+<p>&nbsp;</p>
+<ol>
+<li><span style="font-size:13px;line-height:1.5em;">El autómata comenzará desde su estado inicial. Mientras haya transiciones en el estado actual, el motor intentará ejecutar una por cada carácter del búfer de entrada; así hasta que el autómata llegue a un estado de aceptación o sin transiciones.</span></li>
+<li><span style="line-height:1.5em;">Si llega a un estado de&nbsp;</span>aceptación<span style="line-height:1.5em;">&nbsp;pero hay más transiciones a otros estados, el motor seguirá leyendo caracteres para ejecutar esas transiciones.</span></li>
+</ol>
+<p><span style="font-size:13px;line-height:1.5em;">&nbsp;</span></p>
+<ul>
+<li><span style="font-size:13px;line-height:1.5em;">Se considera que hay coincidencia y se detiene el análisis cuando:</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">El autómata está en un estado de aceptación y no hay más transiciones.</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">El texto ha terminado y el autómata está en un estado de aceptación (esto sucede cuando se procesa una regexp con cuantificador asterisco)</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">Habiendo más transiciones en un estado de aceptación y el carácter que llega de entrada no cumple ninguna.</span></li>
+</ul>
+<p>&nbsp;</p>
+<p>Diagrama que presenta las fases de la compilación de la regexp.</p>
+<p>&nbsp;</p>
+<p><img id="pbImage988795" style="border:0px;" src="./arquitectura_spanish_files/rexgen_arch.png" alt="Diagrama que presenta las fases de la compilación de la regexp." width="220" height="528"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>En la siguiente imagen se puede observar el autómata finito determinista que el motor construye para ejecutar la regexp&nbsp;</p>
+<p>&nbsp;</p>
+<pre>&lt;[a-z]+:?[a-z]+[0-9]?\\s*(/&gt;|&gt;) (1)
+ </pre>
+<p>que reconoce etiquetas html</p>
+<p>&nbsp;</p>
+<p><img id="pbImage371851" style="border:0px;" src="./arquitectura_spanish_files/rexgen_afd1.png" alt="AFD de la expresión regular &lt;[a-z]+:?[a-z]+[0-9]?\\s*(/&gt;|&gt;)" width="800" height="232"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a class="pbTOC" name="Parseodelaexpresiónregular"></a>Parseo de la expresión regular.</h3>
+<p>&nbsp;</p>
+<p>Se entiende por parseo de la regexp la tarea de analizar la expresión regular para compilarla.</p>
+<p>&nbsp;</p>
+<h4><a class="pbTOC" name="Gramática"></a>Gramática.</h4>
+<p>&nbsp;</p>
+<p>La especificación de nuestro lenguaje regexp no puede hacerse mediante un lenguaje regular debido a que existen producciones de este tipo:</p>
+<p>&nbsp;</p>
+<pre>A -&gt; xAy</pre>
+<p>&nbsp;</p>
+<p>O la necesidad de mantener las parejas de paréntesis o corchetes.&nbsp;</p>
+<p><span style="font-size:13px;line-height:1.5em;">&nbsp;</span></p>
+<p>Se necesita entonces una gramática libre de contexto. Se especifica la gramática a usar en notación EBNF.</p>
+<p>&nbsp;</p>
+<pre>1.&nbsp;&nbsp;&nbsp;&nbsp; &lt;regexp&gt; ::= &lt;quantified_expression&gt; { &lt;quantified_expression&gt; } &lt;regex&gt;
+2.&nbsp;&nbsp;&nbsp;&nbsp; &lt;regex&gt; ::= '|' &lt;regexp&gt; 
+3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | palabra_vacia
+4.&nbsp;&nbsp;&nbsp;&nbsp; &lt;quantified_expression&gt; ::= &lt;expression&gt; [ &lt;quantifier&gt; ]
+5.&nbsp;&nbsp;&nbsp;&nbsp; &lt;expression&gt; ::=&nbsp; &lt;selector&gt; 
+6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | '(' &lt;regexp&gt; ')' 
+7.&nbsp;&nbsp;&nbsp;&nbsp; &lt;selector&gt; ::= &lt;symbol&gt; 
+8.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &lt;range&gt;
+9.&nbsp;&nbsp;&nbsp;&nbsp; &lt;range&gt; ::= '[' &lt;char_range&gt; ']'
+10.&nbsp;&nbsp;&nbsp; &lt;char_range&gt; ::=&nbsp; &lt;symbol&gt; 
+11.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &lt;escape_char&gt; { &lt;char_range&gt; }
+12.&nbsp;&nbsp;&nbsp; &lt;symbol&gt; ::= &lt;char&gt; 
+13.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &lt;escape&gt;
+14..21 &lt;char&gt; ::= Caracteres imprimibles excepto '(' | ')' | '*' | '+' | '?' | '[' | '\' | '|'
+22..30 &lt;escape_char&gt; ::=&nbsp;&nbsp;&nbsp; '(' | ')' | '*' | '+' | '?' | '[' | '\' | '|' 
+31..37 &lt;escape&gt; ::= '\' &lt;escape_char&gt; | 's' | 't' | '-' | ']' | '^' | '.'
+38.&nbsp;&nbsp;&nbsp; &lt;quantifier&gt; ::= '*'
+39.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | '+' 
+40.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | '?'</pre>
+<p>&nbsp;</p>
+<p>Esta gramática cumple la condición LL(1) Recordemos que, grosso modo, una gramática LL(1) es aquella que permite elegir una producción determinada con sólo leer un token por adelantado. Para otros tipos de gramáticas LL(k) para k &gt; 1, la implementación del analizador sintáctico se complicaría considerablemente.</p>
+<p>&nbsp;</p>
+<p>Siguiendo esta gramática, se ha establecido que un selector es cualquier símbolo que permita seleccionar texto. Por ejemplo, un carácter de la regexp o un rango son selectores.&nbsp;</p>
+<p>Una expresión es o un selector o una agrupación (lo que va entre paréntesis) y una agrupación puede contener a otras regexp.</p>
+<p>Una expresión cuantificada es una expresión seguida, opcionalmente, de un cuantificador. La regexp estará formada por una o más expresiones cuantificadas y opcionalmente unidas por el caracter '|' (alternativa u OR)</p>
+<p>Una rango estará formado por una sucesión de uno o más símbolos entre los caracteres '[' y ']'</p>
+<p>&nbsp;</p>
+<p>Se observa que en la especificación de rangos (producción 9) no se ha establecido nada sobre los guiones ni la posición de estos. Tal estrategia es debida a que se he dejado la interpretación de los rangos en la parte de la construcción del autómata finito no determinista, es decir, los rangos se establecen mediante un análisis semántico. Esto facilita construcciones de este tipo:</p>
+<p><span style="font-size:13px;">&nbsp;</span></p>
+<p>[[az\]]<br><br>que son válidas en la implementación PCRE. Se observa que '[' no se ha escapado, pero ']' sí. Sintácticamente resulta más complicado analizar estas diferencias que hacerlo mediante análisis semántico.</p>
+<p>&nbsp;</p>
+<h4><a class="pbTOC" name="Análisisléxicodelaexpresiónregular"></a>Análisis léxico de la expresión regular</h4>
+<p>&nbsp;</p>
+<p>La misión del analizador léxico es agrupar el texto de entrada en piezas léxicas o símbolos indivisibles (comúnmente llamadas tokens) que serán enviadas al analizador sintáctico.</p>
+<p>&nbsp;</p>
+<p>Hay que tener en cuenta que en en esta implementación los espacios y tabuladores no forman parte del lenguaje regexp en sí, por lo que esos caracteres son ignorados. En esta implementación no se permite el carácter de retorno de línea '\n'.</p>
+<p>&nbsp;</p>
+<p>De esta gramática podemos elegir los tokens que constituirán el léxico. Antes de identificarlos, establecemos qué caracteres son reservados. Esto podemos deducirlo de las producciones 14 a 21</p>
+<pre>'(' &nbsp;')' &nbsp;'*' &nbsp;'+' &nbsp;'?' &nbsp;'[' &nbsp;'\' &nbsp;'|'
+</pre>
+<p>&nbsp;</p>
+<p>Estos caracteres serán tratados como tokens específicos, cada uno con su ID:</p>
+<p>&nbsp;</p>
+<pre>'(' -&gt; L_PARENTHESIS&nbsp;</pre>
+<pre>')' -&gt; R_PARENTHESIS</pre>
+<pre>'*' &nbsp;'+' &nbsp;'?' -&gt; QUANTIFIER &nbsp;&amp;nbsp;</pre>
+<pre>'[' -&gt; R_BRACKET</pre>
+<pre>'\' -&gt; ESCAPE</pre>
+<pre>'|' -&gt; PIPE</pre>
+<p>&nbsp;</p>
+<p>Se creará el <strong>enum</strong> <em>Token</em> con los valores de estos tokens léxicos:</p>
+<p>&nbsp;</p>
+<pre>public enum Token {
+
+&nbsp;&nbsp;&nbsp; /* tokens */
+&nbsp;&nbsp;&nbsp; CHAR, L_PARENTHESIS, R_PARENTHESIS, L_BRACKET, PIPE, QUANTIFIER, ESCAPE,
+
+&nbsp;&nbsp;&nbsp; /* elementos sintácticos */
+&nbsp;&nbsp;&nbsp; REGEX, SELECTOR, RANGE, QUANTIFIED_EXPR, GROUP, EXPRESSION, CHAR_RANGE, REGEXP,
+&nbsp;&nbsp;&nbsp; /* elementos auxiliares */
+&nbsp;&nbsp;&nbsp; ROOT,
+}
+
+</pre>
+<p>De momento no atenderemos a los tokens sintácticos.</p>
+<p>&nbsp;</p>
+<p>El analizador sintáctico mantendrá una referencia a un analizador léxico, el cual utilizará para solicitar tokens.&nbsp;</p>
+<p>El analizador léxico debe exponer un procedimiento que devuelva al analizador sintáctico los tokens desde la entrada:</p>
+<p>&nbsp;</p>
+<p>Para codificar un analizador léxico, se lee una serie de caracteres (es conveniente leer al menos tantos como longitud de caracteres tenga el token más largo) y comprobar carácter a carácter hasta que encontremos que coincide con un token determinado.&nbsp;</p>
+<p>&nbsp;</p>
+<pre>leerTokenSiguiente &lt;strong&gt;return&lt;/strong&gt; token</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer = leerCarateresEntrada(minimo);</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>string</strong> tokenActual = nulo;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>char</strong> caracter = leerCaracter(buffer);
+ </pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>case</strong> 'carácter por el que comience X'&amp;nbsp;</pre>
+<pre>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tokenActual = leerBuffer(longitud token X)</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.. resto de casos</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;<strong>&nbsp;ningun caso:</strong></pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorLexico(posicion);&amp;nbsp;</pre>
+<pre><strong>fin</strong> leerTokenSiguiente.
+  
+</pre>
+<p>Este pseudocódigo debe ser ejecutado cada vez que el analizador sintáctico pida un token nuevo para comprobar la gramática.&nbsp;</p>
+<p>En nuestro caso sólo es necesario leer carácter a carácter sin necesidad de un búfer intermedio, ya que todos los tokens de la gramática tienen longitud uno.&nbsp;</p>
+<p>&nbsp;</p>
+<p>El método que devuelve los tokens al analizador sintáctico queda:</p>
+<p>&nbsp;</p>
+<pre>public boolean readToken() throws LexerException {
+&nbsp;&nbsp; &nbsp;boolean charRead = readCharacter();
+&nbsp;&nbsp; &nbsp;if (charRead) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; switch (character) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; case '[':
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;token = Token.L_BRACKET;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tokenValue = "[";
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; case '(':
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;token = Token.L_PARENTHESIS;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tokenValue = "(";
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; case ')':
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;token = Token.R_PARENTHESIS;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tokenValue = ")";
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; case '+':
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; case '*':
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; case '?':
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;token = Token.QUANTIFIER;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tokenValue = String.valueOf(character);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; case '|':
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;token = Token.PIPE;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tokenValue = "|";
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; case '\\':
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verifyEscapeCharacters();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; default:
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (isValidChar(character)) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; token = Token.CHAR;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; tokenValue = String.valueOf(character);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;} else {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; lexError("Carácter no válido");
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;return charRead;
+}</pre>
+<p><span style="font-size:13px;">&nbsp;</span></p>
+<p>Se observa que si llega un carácter '\' necesariamente el carácter siguiente ha de ser soportado para el escape. Esto lo comprueba el método:</p>
+<p>&nbsp;</p>
+<pre>&nbsp;&nbsp;&nbsp; /*
+&nbsp;&nbsp;&nbsp;&nbsp; * Detectada secuencia de escape. Verificar que el siguiente caracter
+&nbsp;&nbsp;&nbsp;&nbsp; * pertenece al conjunto de caracteres que pueden escaparse.
+&nbsp;&nbsp;&nbsp;&nbsp; */
+&nbsp;&nbsp;&nbsp; private void verifyEscapeCharacters() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (readCharacter()) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int charIndex = findEscapedChar(character);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (charIndex &gt;= 0) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; token = Token.ESCAPE;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tokenValue = String.valueOf(escape_chars_value[charIndex]);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lexError("Carácter " + character + " no forma parte de los caracteres de escape.");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lexError("Se esperaba " + Arrays.toString(escape_chars));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }
+</pre>
+<p><span style="font-size:13px;">&nbsp;</span></p>
+<p>Donde los caracteres de escape permitidos han sido definidos <strong>de forma ordenada</strong> en un array, que es el que usa el método <em>findEscapeChar</em></p>
+<p>&nbsp;</p>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// caracteres de escape permitidos (ordenados)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private char[] escape_chars =&nbsp; { '(', ')', '*', '+', '-', '.', '?', '[', '\\', ']', '^' ,'s', 't', '|' };
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// valor de los caracteres de escape (ordenados)
+&nbsp;&nbsp;&nbsp;&nbsp; private char[] escape_chars_value = { '(', ')', '*', '+', '-', '.', '?', '[', '\\', ']', '^', ' ', '\t', '|' };
+
+</pre>
+<p>El analizador léxico también debe ignorar convenientemente algunos caracteres si procede. En este caso los espacios y los tabuladores son ignorados. De esto se encarga el método <em>readCharacter</em></p>
+<p>&nbsp;</p>
+<pre>// caracteres ignorados por el analizador lexico
+private char[] ignoredChars = { '\t', ' ' };
+
+private boolean readCharacter() {
+&nbsp;&nbsp;&nbsp; boolean charRead = false;
+&nbsp;&nbsp;&nbsp; while (!charRead &amp;&amp; index &lt; regex.length()) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; character = regex.charAt(index++);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; charRead = !isIgnoredChar(character);
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp; return charRead;
+}
+
+private boolean isIgnoredChar(char pCharacter) {
+&nbsp;&nbsp; &nbsp;return (Arrays.binarySearch(ignoredChars, pCharacter) &gt;= 0);
+}
+
+</pre>
+<h4><a class="pbTOC" name="Análisissintácticodelaexpresiónregular"></a><span style="font-size:13px;line-height:1.5em;">Análisis sintáctico de la expresión regular.</span></h4>
+<p>&nbsp;</p>
+<p>El analizador sintáctico o Parser se encarga de verificar si la regexp está correctamente formada. Para ello comprueba que la secuencia de tokens que va &nbsp;entregando el analizador léxico cumple las especificaciones de la gramática que se ha definido.</p>
+<p>&nbsp;</p>
+<p>El parser implementado es del tipo descendente-predictivo-recursivo. Este tipo de parsers son muy comunes y fáciles de implementar. Para poder codificarlos con facilidad es muy conveniente que la gramática dada sea LL(1), ya que leyendo sólo un token por adelantado omitimos la necesidad de "volver hacia atrás" en caso de que llegue un token que no corresponde con la producción que se analiza en ese momento.</p>
+<p>&nbsp;</p>
+<p>Este tipo de parsers definen un procedimiento por cada producción de la gramática. En cada procedimiento, se consumen los tokens en el orden que se ha establecido en dicha gramática. Si al consumir un token este no es el esperado, se lanza error sintáctico.</p>
+<p>&nbsp;</p>
+<p>Analicemos un caso sencillo. Las producciones 5 y 6 de la gramática son:</p>
+<p>7. &nbsp; &nbsp; &lt;selector&gt; ::= &lt;symbol&gt;&nbsp;</p>
+<p>8.	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;| &lt;range&gt;</p>
+<p>&nbsp;</p>
+<p>Para esta producción puede escribirse un método como el siguiente:</p>
+<p>&nbsp;</p>
+<pre>private void prSelector() {
+
+&nbsp;&nbsp; &nbsp;if (match(Token.CHAR, Token.ESCAPE)) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; prSymbol();
+&nbsp;&nbsp; &nbsp;} else if (token == Token.L_BRACKET) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; prRange();
+&nbsp;&nbsp; &nbsp;}
+}&nbsp;&nbsp;&nbsp; 
+</pre>
+<p>&nbsp;</p>
+<p>Lo primero que observamos es que hay una sentencia if-else. Esto es debido a que la producción admite dos alternativas, como se puede observar. Esto implica que por cada alternativa de una producción en la gramática hay un sentencia condicional.&nbsp;</p>
+<p>&nbsp;</p>
+<p>E<span style="font-size:13px;line-height:1.5em;">sta sentecia decide si ir por una producción u otra, para ello se usa el método </span><em style="font-family:inherit;font-weight:inherit;line-height:1.5em;">match</em><span style="font-size:13px;line-height:1.5em;">, que comprueba si el valor del token leído coincide con alguno de los que se pasan por parámetro.</span></p>
+<p>&nbsp;</p>
+<p>Se comprueba el token CHAR y el token ESCAPE porque precisamente la producción &lt;symbol&gt; está formada por esos dos símbolos terminales:</p>
+<p>&nbsp;</p>
+<p>12. &nbsp; &nbsp;&lt;symbol&gt; ::= &lt;char&gt;&nbsp;</p>
+<p>13. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &lt;escape&gt;</p>
+<p>&nbsp;</p>
+<p>Viendo este comportamiento, podemos ver que estamos "analizando hacia abajo", ejecutando una verificación del token actual y llamando recursivamente a la producción adecuada en función del token leído. De ahí el nombre de Parser descendente-predictivo-recursivo.</p>
+<p>&nbsp;</p>
+<p>La producción &lt;symbol&gt; tendrá su correspondiente método que la representa:</p>
+<p>&nbsp;</p>
+<pre>private void prSymbol() {
+
+&nbsp;&nbsp; &nbsp;if (match(Token.CHAR)) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; consume(Token.CHAR);
+&nbsp;&nbsp; &nbsp;} else if (match(Token.ESCAPE)) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; consume(Token.ESCAPE);
+&nbsp;&nbsp; &nbsp;}
+}
+
+</pre>
+<p>Se comprueba que el método tiene exactamente la misma estructura que la definición gramatical.</p>
+<p>&nbsp;</p>
+<p>Aquí usamos un nuevo método: &lt;em&gt;consume&lt;/em&gt;. Este método verifica que el token actual sea el solicitado y luego lee el siguiente token, "consumiendo" el token actual. La diferencia con el método <em>match</em> es precisamente que este último sólo verifica el token actual, pero no lee el siguiente token.</p>
+<p><em>&nbsp;</em></p>
+<pre>private Token consume(String c) {
+&nbsp;&nbsp; &nbsp;String tokenValue = lexicalAnalyzer.getTokenValue();
+&nbsp;&nbsp; &nbsp;if (!c.equals(tokenValue)) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; parseError(new String[] { c });
+&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;readNextToken();
+&nbsp;&nbsp; &nbsp;return token;
+}</pre>
+<p>&nbsp;</p>
+<p>En la línea 2 se puede ver cómo se obtienen los tokens usando el analizador léxico construído antes.</p>
+<p>&nbsp;</p>
+<p>Si en la gramática tenemos expresiones de tipo cuantificador como { &lt;produccion&gt; }, simplemente usamos un while.</p>
+<p>&nbsp;</p>
+<p>Analicemos el código para la siguiente producción:</p>
+<p>&nbsp;</p>
+<p>1. &nbsp; &nbsp; &lt;regexp&gt; ::= &lt;quantified_expression&gt; { &lt;quantified_expression&gt; } &lt;regex&gt;</p>
+<p>&nbsp;</p>
+<p>La cual indica <em>"un &lt;quantified_expression&gt; repetido al menos una vez, seguido de una producción &lt;regex&gt;"</em></p>
+<p>&nbsp;</p>
+<p>Codificamos el método según esta especificación gramatical:</p>
+<p>&nbsp;</p>
+<pre>private void prRegexp() {</pre>
+&nbsp;
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// al menos un quantified_expression, luego es necesario verificar el primero. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Si el token que llega no corresponde a esa producción, es un error sintáctico</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS)) {</pre>
+<pre>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prQuantifiedExpression();</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {</pre>
+<pre>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parseError(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS);</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+&nbsp;
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// seguido de cero o más ({ &nbsp;&lt;quantified_expression&gt; })</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS)) {</pre>
+<pre>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prQuantifiedExpression();</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// ahora necesariamente irá una producción regex()</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prRegex();</pre>
+<pre>}</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Se muestra ahora el código completo simplificado (sin la parte que crea el árbol sintáctico y omitiendo algunos métodos de utilidad) del analizador sintáctico:</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<pre>public class Parser {
+
+&nbsp;&nbsp;&nbsp; private LexicalAnalyzer lexicalAnalyzer;
+&nbsp;&nbsp;&nbsp; private Token token;
+
+&nbsp;&nbsp;&nbsp; public Parser(LexicalAnalyzer pLexicalAnalyzer) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lexicalAnalyzer = pLexicalAnalyzer;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public void analyze() {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // un símbolo adelantado
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; readNextToken();
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (token == null) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; throw new SyntaxException("Regex vacía.");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // entramos por la producción principal. A partir de ahí la recursión de
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // producciones consumirá los tokens.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prRegexp();
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // análisis sintáctico terminado.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // no debería haber más tokens si el parseo ha sido correcto.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (token != null) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parseError("Expresión no balanceada.");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; private void prRegexp() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // al menos un quantified_expression. Es necesario verificar el primero
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // y si no hay, entonces es un error sintáctico
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prQuantifiedExpression();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parseError(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // seguido de cero o más.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prQuantifiedExpression();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ahora un &lt;regex&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prRegex();
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; private void prRegex() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // si hay un pipe, necesariamente debe seguirle otra &lt;regexp&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (match(Token.PIPE)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consume(Token.PIPE);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prRegexp();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // o palabra vacia.
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; private void prQuantifiedExpression() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // debe venir una expression
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prExpression();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // opcionalmente puede venir un cuantificador
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (match(Token.QUANTIFIER)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consume(Token.QUANTIFIER);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; private void prExpression() {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prSelector();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else if (match(Token.L_PARENTHESIS)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consume(Token.L_PARENTHESIS);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prRegexp(); // debe haber una regex entre los paréntesis
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consume(Token.R_PARENTHESIS);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; private void prSelector() {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (match(Token.CHAR, Token.ESCAPE)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prSymbol();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else if (token == Token.L_BRACKET) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prRange();
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; private void prRange() {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // debe haber un '['
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consume(Token.L_BRACKET);
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (match(Token.ESCAPE, Token.CHAR)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prCharRange();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parseError(Token.CHAR, Token.ESCAPE);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // cerrar el rango
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consume("]");
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; private void prCharRange() {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // evita un rango vacio. Aqui se ha hecho un pequeño análisis semántico.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (lexicalAnalyzer.getTokenValue().equals("]")) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parseError(Token.CHAR, Token.ESCAPE);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * El bucle while se puede consumir cualquier carácter excepto ']'. El
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * léxico enviará tokens como L_PARENTHESIS o L_BRACKET si huiera
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * caracteres '(' y '[', pero en este caso se ignoran y se tratan como
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * CHAR.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while (!lexicalAnalyzer.getTokenValue().equals("]")) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consume(token);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; private void prSymbol() {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (match(Token.CHAR)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consume(Token.CHAR);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else if (match(Token.ESCAPE)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consume(Token.ESCAPE);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; // fin de los métodos asociados a las producciones.
+&nbsp;&nbsp;&nbsp; private void readNextToken() {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (lexicalAnalyzer.readToken()) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; token = lexicalAnalyzer.getToken();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; token = null;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; private boolean match(Token... pToken) {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (Token t : pToken) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (token == t) { // uso == por null-safe
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return true;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false;
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; private Token consume(Token pToken) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!token.equals(pToken)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parseError(pToken);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; readNextToken();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return token;
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; private Token consume(String c) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String tokenValue = lexicalAnalyzer.getTokenValue();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!c.equals(tokenValue)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parseError(new String[] { c });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; readNextToken();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return token;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; private void parseError(Token... tokens) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; throw new SyntaxException(lexicalAnalyzer.getIndex(), tokens);
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; private void parseError(String[] c) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; throw new SyntaxException(lexicalAnalyzer.getIndex(), c);
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; private void parseError(String msg) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; throw new SyntaxException(lexicalAnalyzer.getIndex(), msg);
+&nbsp;&nbsp;&nbsp; }
+}</pre>
+<p>&nbsp;</p>
+<p>Realmente lo que se está haciendo es simular un autómata a pila, que es el tipo de autómata que reconoce gramáticas libres de contexto.</p>
+<p>&nbsp;</p>
+<h4><a class="pbTOC" name="Generacióndelárbolsintáctico"></a>Generación del árbol sintáctico</h4>
+<p>&nbsp;</p>
+<p>Construir el árbol sintáctico resulta muy sencillo en un analizador como el implementado, ya que al hacer las llamadas de forma descendente y recursiva, facilita considerablemente la tarea de manejar una estructura de datos de estructura arbórea. De hecho, este árbol sintáctico no es más que un reflejo de todas las llamadas a cada una de las producciones que se van realizando en la ejecución del analizador sintáctico.</p>
+<p>&nbsp;</p>
+<p>Un nodo sintáctico se representa con la siguiente clase:</p>
+<p>&nbsp;</p>
+<pre>public class ASTNode {
+
+&nbsp;&nbsp;&nbsp; private String value = "";
+&nbsp;&nbsp;&nbsp; private List&lt;ASTNode&gt; children;
+&nbsp;&nbsp;&nbsp; private Token type;
+&nbsp;&nbsp;&nbsp; private int positionInRegex;
+
+&nbsp;&nbsp;&nbsp; public ASTNode(Token pType, int position) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; type = pType;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; children = new ArrayList&lt;ASTNode&gt;();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; positionInRegex = position;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public ASTNode(Token pType, String pValue) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; type = pType;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value = pValue;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public String getValue() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return value;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public void setValue(String value) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.value = value;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public Iterable&lt;ASTNode&gt; getChildren() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Collections.unmodifiableList(children);
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public void addChild(ASTNode childNode) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; children.add(childNode);
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public Token getType() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return type;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public void setType(Token type) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.type = type;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public boolean isEmpty() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return children.isEmpty();
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public int getChildrenCount() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return children.size();
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public int getPositionInRegex() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return positionInRegex;
+&nbsp;&nbsp;&nbsp; }
+
+}</pre>
+<p>&nbsp;</p>
+<p>Para construirlo sólo es necesario que cada método que representa una producción construya su propio nodo y lo retorne. Al ser llamadas recursivas, los nodos se irán añadiendo al árbol siguiendo el orden sintáctico.</p>
+<p>&nbsp;</p>
+<p>Cada producción instanciará un objeto ASTNode y le asignará un token y su valor. Al mismo tiempo, añadirá como nodos hijos las llamadas a las producciones hijas que tenga.&nbsp;</p>
+<p>&nbsp;</p>
+<p>Por ejemplo, para la producción <em>&lt;expression&gt;</em></p>
+<p>&nbsp;</p>
+<pre>private ASTNode prExpression() {
+&nbsp;&nbsp; &nbsp;ASTNode node = createNode(Token.EXPRESSION);
+&nbsp;&nbsp; &nbsp;if (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET)) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+        ASTNode n = prSelector();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; addChildNode(node, n);
+
+&nbsp;&nbsp; &nbsp;} else if (match(Token.L_PARENTHESIS)) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ASTNode nodeGroup = createNode(Token.GROUP);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; consume(Token.L_PARENTHESIS);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ASTNode regex = prRegexp();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; consume(Token.R_PARENTHESIS);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; addChildNode(nodeGroup, regex);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; addChildNode(node, nodeGroup);
+&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;return node;
+}</pre>
+<p><span style="font-size:13px;line-height:1.5em;">&nbsp;</span></p>
+<p>Se observa cómo cada producción retorna su propio nodo y estos se añaden como hijos al nodo actual.</p>
+<p><span style="font-size:13px;line-height:1.5em;">&nbsp;</span></p>
+<p>Para una regexp como<em> ab+, </em>se genera el siguiente árbol sintáctico:</p>
+<p>&nbsp;</p>
+<p><img id="pbImage981195" style="border:0px none;" src="./arquitectura_spanish_files/rexgen_ast1.png" alt="" width="650" height="419"></p>
+<p>&nbsp;</p>
+<h3><a class="pbTOC" name="nbsp"></a><em>&nbsp;</em></h3>
+<h3><a class="pbTOC" name="Autómatas"></a>Autómatas.</h3>
+<p>&nbsp;</p>
+<h4><a class="pbTOC" name="Estructuradedatosparaelautómatanbsp"></a>Estructura de datos para el autómata&nbsp;</h4>
+<p>&nbsp;</p>
+<p>Tomando como base que un autómata puede representarse mediante un grafo dirigido, la estructura elegida para representar este grafo ha sido utilizar listas de adyacencia. Esto consiste en guardar en cada nodo del grafo, que en este caso es un estado del autómata representado por la clase State, los punteros a los estados con los que está conectado. Cada puntero al siguiente estado representa una transición al próximo nodo o estado.</p>
+<p>&nbsp;</p>
+<pre>/**
+ * Clase que representa un estado en un autómata finito.
+ */
+public class State implements Comparable&lt;State&gt; {
+
+ // conjunto de transiciones para este estado
+ private List&lt;Transition&gt; transitions;
+
+ // indica que es inicial
+ private boolean initial = false;
+
+ // indica que es final o de aceptación
+ private boolean end = false;
+
+ private int id = -1;
+
+ // conecta un estado con otro por medio de una transición.
+ public void connect(Transition transition, State pState) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition.setNextState(pState);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transitions.add(transition);
+&nbsp;&nbsp;}
+}
+
+</pre>
+<p>Cada transición en sí misma es un objeto de la clase <em>Transition</em>, que representa el tipo de transición al siguiente estado.</p>
+<p>&nbsp;</p>
+<pre>public abstract class TransitionBase implements Transition, Comparable&lt;Transition&gt; {
+
+&nbsp;&nbsp;&nbsp; private State nextState;
+&nbsp;&nbsp;&nbsp; private String representation;
+
+&nbsp;&nbsp;&nbsp; public State getNextState() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return nextState;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public void setNextState(State nextState) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.nextState = nextState;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; // conecta un estado con otro por mediao de una transición.
+&nbsp;&nbsp;&nbsp; public void connect(Transition transition, State pState) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition.setNextState(pState);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transitions.add(transition);
+&nbsp;&nbsp;&nbsp; }
+}
+
+</pre>
+<p>El objeto <em>Transition</em> es una interfaz que es implementada por una clase por cada tipo de transición:</p>
+<p>&nbsp;</p>
+<ul>
+<li><span style="font-size:13px;line-height:1.5em;">TransitionEmpty. Representa una transición vacía. Es fundamental para construir los AFND&nbsp;</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">TransitionExclude. Representa la transición [^abcd...]</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">TransitionExcludeRange. Representa la transición [^a-z]</span></li>
+<li><span style="font-size:13px;line-height:1.5em;">TransitionRange. Representa la transición [a-z] y al mismo tiempo un selector 'a'. Para este segundo caso simplemente se establece que el inicio y final del rango es el mismo carácter.</span></li>
+</ul>
+<p>&nbsp;</p>
+<p>La clase para el autómata, <em>Automaton</em>, contendrá una referencia al primer estado, así como la lista de transiciones usadas y la lista de estados. Mantener las dos listas anteriores viene muy bien a la hora de ejecutar el algoritmo que reducirá el AFND a un autómata determinista.</p>
+<p>&nbsp;</p>
+<h4><a class="pbTOC" name="GeneracióndelautómatafinitonodeterministaAFND"></a>Generación del autómata finito no determinista (AFND).</h4>
+<p>&nbsp;</p>
+<p>Un lenguaje regular puede ser analizado por un autómata finito no determinista (a partir de ahora, AFND) por lo que la siguiente fase del motor de regexp es generar este autómata.</p>
+<p>Para generar un AFND a partir de una expresión regular, se puede seguir el <a href="http://es.wikipedia.org/wiki/Algoritmo_de_Thompson%20Criterios%20de%20Thompson">algoritmo de Thompson</a>. Este asocia cada expresión regular mínima con un autómata finito no determinista.</p>
+<p>&nbsp;</p>
+<p>Veamos qué AFND se genera por cada regexp mínima:</p>
+<p>&nbsp;</p>
+<p>Para la expresión regular <em>a</em> (o cualquier selector mínimo)</p>
+<p>&nbsp;</p>
+<p><img id="pbImage43765" src="./arquitectura_spanish_files/rexgen_afnd1.png" alt=""></p>
+<p>&nbsp;</p>
+<p>Para una regexp con cuantificador '+', por ejemplo <em>a+</em></p>
+<p>&nbsp;</p>
+<p><img id="pbImage238704" src="./arquitectura_spanish_files/rexgen_afnd2.png" alt=""></p>
+<p>&nbsp;</p>
+<p>Para la regexp R con cuantificador '*', por ejemplo <em>a*</em></p>
+<p>&nbsp;</p>
+<p><img id="pbImage910735" src="./arquitectura_spanish_files/rexgen_afnd3.png" alt=""></p>
+<p>&nbsp;</p>
+<p>Para una regexp con cuantificador '?', por ejemplo <em>a?</em></p>
+<p>&nbsp;</p>
+<p><em><img id="pbImage729052" src="./arquitectura_spanish_files/rexgen_afnd4.png" alt=""><br></em></p>
+<p><br>Para un regexp tipo 'R1|R2' como <em>abc|def</em></p>
+<p>&nbsp;</p>
+<p><img id="pbImage900796" style="border:0px none;" src="./arquitectura_spanish_files/rexgen_afnd5.png" alt="" width="700" height="69"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Para una agrupación (modificación de precedencia) tipo <em>ab(c|d)ef</em></p>
+<p>&nbsp;</p>
+<p><em><img id="pbImage89175" style="border:0px none;" src="./arquitectura_spanish_files/rexgen_afnd6.png" alt="" width="600" height="78"><br></em></p>
+<p>&nbsp;</p>
+<p>Para la regexp con varios selectores seguidos (concatenación) como 'abcd'</p>
+<p>&nbsp;</p>
+<p><img id="pbImage616204" style="border:0px none;" src="./arquitectura_spanish_files/rexgen_afnd7.png" alt="" width="600" height="28"></p>
+<p>&nbsp;</p>
+<p>Los rangos siguen siendo selectores, por lo que los AFND generados son iguales a los de un sólo carácter. La diferencia fundamental es que para un rango tipo [a-z] no es óptimo crear 26 transiciones, por lo que se ha creado un tipo de transición que representa rangos.<br><br>Por ejemplo, la regexp [a-z]+ genera el siguiente AFND</p>
+<p>&nbsp;</p>
+<p><img id="pbImage935824" src="./arquitectura_spanish_files/rexgen_afnd8.png" alt=""></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Para generar estos AFND se sigue un esquema parecido al analizador sintáctico, pero esta vez se analiza el árbol de nodos sintácticos que se ha generado. Cada nodo o producción tendrá su correspondiente método que genera el AFND mínimo.<br><br>Fijémonos ahora en el árbol sintáctico generado anteriormente. Comprobamos que por cada nodo tipo <em>regexp </em>hay una serie de <em>expresiones cuantificadas</em> en el primer nivel. Esto implica que para construir el AFND se irán analizando cada QUANTIFIED_EXPRESSION en el mismo nivel y por cada uno, analizar en profundidad su rama. A la vuelta de cada una de ellas, se guardarán los estados generados en una cola. Al final, se iterará sobre esta cola para ir concatenando todos los AFND.<br><br>Los autómatas que se van generando serán almacenados como un grafo de estados. Para representar esta estructura se usa la clase <em>StatePair</em></p>
+<p>&nbsp;</p>
+<pre>/**
+&nbsp;* Almacena un par de estados. Esta estructura será útil para ir construyendo el
+&nbsp;* grafo que representa el autómata.
+&nbsp;*/
+class StatePair {
+
+&nbsp;&nbsp;&nbsp; private State firstState;
+&nbsp;&nbsp;&nbsp; private State secondState;
+
+&nbsp;&nbsp;&nbsp; public StatePair(State firstState, State secondState) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.firstState = firstState;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.secondState = secondState;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public State getFirstState() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return firstState;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public void setFirstState(State firState) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.firstState = firState;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public State getSecondState() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return secondState;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public void setSecondState(State secondState) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.secondState = secondState;
+&nbsp;&nbsp;&nbsp; }
+}
+</pre>
+<p>&nbsp;</p>
+<p>Basta con almacenar el estado inicial para comenzar la búsqueda en el grafo de estados, y el estado final para poder concatenar este grafo (o autómata) al siguiente que se genere.<br><br>La clase encargada de construir el AFND es <em>AutomatonBuilder</em>. El método <em>generateNFA(ASTNode node)</em> obtendrá el nodo raíz del árbol y lo enviará al método <em>faBuildRegexp</em>. Este método analizará el primer nivel desde el nodo enviado para ir almacenando las expresiones en una cola:<br><br></p>
+<pre>private StatePair faBuildRegexp(ASTNode pNode) {
+
+&nbsp;&nbsp; &nbsp;StatePair headStatePair = null;
+&nbsp;&nbsp; &nbsp;// cola de autómatas a concatenar
+&nbsp;&nbsp; &nbsp;Queue&lt;StatePair&gt; statePairsQueue = new LinkedList&lt;StatePair&gt;();
+
+&nbsp;&nbsp; &nbsp;for (ASTNode childNode : pNode.getChildren()) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; if (childNode.getType().equals(Token.QUANTIFIED_EXPR)) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;StatePair newExpressionPair = faBuildQuantifiedExpression(childNode);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;/* añadir subconjunto de estados del autómata a la cola para
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; * unir todos posteriormente. Esto respeta el orden de
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;* prioiridad: primero las expresiones y luego el OR
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;*/
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;statePairsQueue.add(newExpressionPair);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; } else if (childNode.getType().equals(Token.REGEX)) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;/* 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Si hemos llegado aquí, es porque hay un OR. Seguimos el criterio de Thompson 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; para conectar los estados y cosntruir el AFND
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;StatePair regexpPair = faBuildRegex(childNode, statePairsQueue);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// conectamos todos los estados anteriores, que forman r1
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;StatePair orStatePair = null;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;headStatePair = statePairsQueue.poll();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;orStatePair = headStatePair;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;while (!statePairsQueue.isEmpty()) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; StatePair newStatePair = statePairsQueue.poll();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; orStatePair.getSecondState().connect(createEmptyTransition(), 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newStatePair.getFirstState());
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; orStatePair = newStatePair;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;/*
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; * ahora r1 es un solo autómata que unimos al autómata del
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; * segundo operador del OR
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; */
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;State q0 = new State();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;State q1 = new State();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;q0.connect(createEmptyTransition(), headStatePair.getFirstState());
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;q0.connect(createEmptyTransition(), regexpPair.getFirstState());
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;regexpPair.getSecondState().connect(createEmptyTransition(), q1);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;orStatePair.getSecondState().connect(createEmptyTransition(), q1);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;StatePair pipeStatePair = new StatePair(q0, q1);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;statePairsQueue.add(pipeStatePair);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp; &nbsp;}
+
+&nbsp;&nbsp; &nbsp;/*
+&nbsp;&nbsp; &nbsp; * Se unen todos los subconjuntos de estados obtenidos a partir de los
+&nbsp;&nbsp; &nbsp; * nodos sintácticos analizados.
+&nbsp;&nbsp; &nbsp; * 
+&nbsp;&nbsp; &nbsp; * Estos son los nodos tipo &lt;qualified_expression&gt; que aún hay que
+&nbsp;&nbsp; &nbsp; * procesar.
+&nbsp;&nbsp; &nbsp; */
+&nbsp;&nbsp; &nbsp;headStatePair = statePairsQueue.poll();
+&nbsp;&nbsp; &nbsp;StatePair tmpPair = headStatePair;
+
+&nbsp;&nbsp; &nbsp;while (!statePairsQueue.isEmpty()) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; StatePair pair = statePairsQueue.poll();
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; tmpPair.getSecondState().connect(createEmptyTransition(), pair.getFirstState());
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; tmpPair = pair;
+&nbsp;&nbsp; &nbsp;}
+
+&nbsp;&nbsp; &nbsp;headStatePair.setSecondState(tmpPair.getSecondState());
+
+&nbsp;&nbsp; &nbsp;return headStatePair;
+}
+
+</pre>
+<p>Por cada QUANTIFIED_EXPRESSION se construirá el autómata que lo represente y se almacenará en la cola.</p>
+<p>&nbsp;</p>
+<p>Llamando a <em>faBuildQuantifiedExpression</em>se irá navegando en profundidad en la rama correspondiente del árbol sintáctico, llamando a su vez al método adecuado por cada nodo del árbol. Esto es exactamente la misa estrategia que se usó en el analizador sintáctico.<br><br>Por ejemplo, cuando llega un símbolo (como 'a') se ejecutará el siguiente método, que construirá el AFND mínimo para un símbolo:</p>
+<p>&nbsp;</p>
+<pre>private StatePair faBuildChar(ASTNode pNode) {
+
+&nbsp;&nbsp; &nbsp;char character = pNode.getValue().charAt(0);
+&nbsp;&nbsp; &nbsp;char initChar;
+&nbsp;&nbsp; &nbsp;char endChar;
+
+&nbsp;&nbsp; &nbsp;if (character == '.') {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; initChar = ' ';
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; endChar = Character.MAX_VALUE;
+&nbsp;&nbsp; &nbsp;} else {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; initChar = endChar = character;
+&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;// crear la transicion tipo rango (de un carácter)
+&nbsp;&nbsp; &nbsp;Transition t = new TransitionRange(initChar, endChar);
+&nbsp;&nbsp; &nbsp;// crear los estados final e incial
+&nbsp;&nbsp; &nbsp;State init = new State();
+&nbsp;&nbsp; &nbsp;State end = new State();
+&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp; &nbsp;// conectarlos
+&nbsp;&nbsp; &nbsp;init.connect(t, end);
+
+&nbsp;&nbsp; &nbsp;return new StatePair(init, end);
+}
+</pre>
+<p>&nbsp;</p>
+<p>De esta forma ya hemos creado el AFND mínimo para el selector 'a'. Ahora este AFND se retorna al método que lo ha llamado para que a su vez lo añada al que ha creado, y así sucesivamente.</p>
+<p>&nbsp;</p>
+<p>Analizaremos el método que genera una <em>&lt;quantified_expression&gt; </em>completa. Si nos fijamos en el nodo QUANTIFIED_EXPRESSION del árbol sintáctico de la regexp <em>ab+</em>:</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img id="pbImage56430" src="./arquitectura_spanish_files/rexgen_ast2.png" alt=""></p>
+<p>&nbsp;</p>
+<p>Vemos que si hay un cuantificador (en esta caso, '+'), se añade como hermano del nodo de la expresión a cuantificar. Ese cuantificador afecta a toda la rama anterior.</p>
+<p>&nbsp;</p>
+<p>Lo siguiente es el código que genera el AFND para una expresión cuantificada. Primero genera el AFND de la expresión en sí para luego conectar los estados correspondientes a los cuantificadores, siguiendo los criterios de Thompson.</p>
+<p>&nbsp;</p>
+<pre>private StatePair faBuildQuantifiedExpression(ASTNode quantifiedExpression) {
+
+&nbsp;&nbsp; &nbsp;StatePair headStatePair = null;
+&nbsp;&nbsp; &nbsp;StatePair expressionPair = null;
+
+&nbsp;&nbsp; &nbsp;for (ASTNode child : quantifiedExpression.getChildren()) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; if (child.getType() == Token.EXPRESSION) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StatePair newExpressionPair = faBuildExpression(child);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (expressionPair != null) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transition t = createEmptyTransition();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expressionPair.getSecondState().connect(t, newExpressionPair.getFirstState());
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  expressionPair = newExpressionPair;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  } else {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // el nodo es de tipo cuantificador
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; if (child.getValue().equals("+")) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Transition t = createEmptyTransition();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; expressionPair.getSecondState().connect(t, expressionPair.getFirstState());
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; } else if (child.getValue().equals("*")) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// conectar primero con ultimo con una transicion vacia
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transition t = createEmptyTransition();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expressionPair.getSecondState().connect(t, expressionPair.getFirstState());
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// crear dos nuevos estados para '*'
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State q0 = new State();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; State q1 = new State();
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q0.connect(createEmptyTransition(), expressionPair.getFirstState());
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expressionPair.getSecondState().connect(createEmptyTransition(), q1);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q0.connect(createEmptyTransition(), q1);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expressionPair.setFirstState(q0);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expressionPair.setSecondState(q1);
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } else { // tipo '?'
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expressionPair.getFirstState().connect(createEmptyTransition(), expressionPair.getSecondState());
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; if (headStatePair == null) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;headStatePair = expressionPair;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;return headStatePair;
+}</pre>
+<p>&nbsp;</p>
+<p>Para la regexp anterior (<em>ab+</em>), el AFND resulta:</p>
+<p>&nbsp;</p>
+<p><img id="pbImage665253" src="./arquitectura_spanish_files/rexgen_afnd9.png" alt=""></p>
+<h3><a class="pbTOC" name="nbsp"></a>&nbsp;</h3>
+<h4><a class="pbTOC" name="GeneracióndelautómatafinitodeterministaAFD"></a>Generación del autómata finito determinista (AFD)</h4>
+<h3><a class="pbTOC" name="nbsp"></a>&nbsp;</h3>
+<p>Es posible ejecutar un AFND para verificar la expresión regular contra un texto, pero resulta bastante engorroso de codificar. Hay que mantener dos pilas e ir alternando en función de los caracteres. <br><br>Resulta mucho más rápido y sencillo ejecutar un AFD; y precisamente aprovechamos el hecho de que todo AFND tiene un AFD equivalente (reconoce el mismo lenguaje regular)</p>
+<p>&nbsp;</p>
+<p>Por ello tenemos que convertir el AFND en AFD usando un algoritmo llamado <strong>Construcción subconjunto</strong><br><br>Este algoritmo consiste en agrupar los estados del AFND que resultan de leer un mismo símbolo de entrada, además de agrupar aquellos estados que se conectan entre sí con transiciones vacías.<br><br>El algoritmo usa tres operaciones básicas:<br><br>Si Qn es cualquier estado del AFDN:</p>
+<p>&nbsp;</p>
+<p><strong>Cierre-epsilon(Qn)</strong>: Produce el conjunto de estados que se alcanzan desde el estado Qn usando la transición vacía. Siempre incluye el propio estado del que parte.</p>
+<p><br>Esta operación permite obtener todos los estados que siempre son alcanzables partiendo de un estado determinado, de forma que pueden agruparse en uno sin problemas.<br><br>Si Sn es un estado del AFD que agrupa a estados del AFND:<br><br><strong>Cierre-epsilon(An)</strong>: Produce el conjunto de estados que pueden ser alcanzados con transiciones vacías desde cada uno de los estados agrupados. <br><br><strong>Movimiento(Sn, 'caracter')</strong>: Retorna aquellos estados del AFND que son alcanzables usando el carácter especificado desde cada uno de los estados que agrupa Sn.</p>
+<p>&nbsp;</p>
+<p>Pseudódigo del algoritmo subconjunto:</p>
+<p>&nbsp;</p>
+<pre>1&nbsp;&nbsp; &nbsp;estadosAFD : list
+2&nbsp;&nbsp; &nbsp;S = cierre-epsilon(estado_inicial(AFND))
+3&nbsp;&nbsp; &nbsp;Mientras estados sin marcar en estadosAFD hacer
+4&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;S = obtener_un_sin_marcar(estadosAFD)
+5&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Por cada s=símbolo del lenguaje del autómata hacer
+6&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;SM = Move(S,s)
+7&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;si SM no es vacío
+8&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;SM = cierre-epsilon(SM)
+9&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;si (SM no esta en estadosAFD) entonces
+10&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;estadosAFD = estadosAFD UNION SM
+11&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fin si
+12&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;conectar SM con S con transición s
+13&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fin si
+14&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fin para
+15&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;marcar(S);
+16&nbsp;&nbsp; &nbsp;fin mientras</pre>
+<p>&nbsp;</p>
+<p>Finalmente <em>estadosAFD</em> será el conjunto de estados del AFD.<br><br>Nos fijamos en la línea 5 del pseudocódigo del algoritmo. Esta especifica que hay que realizar las operaciones de agrupación por cada símbolo del lenguaje que reconoce el AFND. Realmente este lenguaje ya lo sabemos: es el conjunto de transiciones del AFND, de ahí que la clase <em>Automaton </em>almacene la una lista de todas las transiciones del autómata. Si no fuera así, habría que probar con todo el conjunto de caracteres Unicode.</p>
+<p>&nbsp;</p>
+<p>Para este algoritmo se ha usado una clase auxiliar llamada SubSetState. Esta clase simplemente agrupa un Set de objetos State.</p>
+<p>&nbsp;</p>
+<p>El código que realiza esta operación está tambien en la clase <em>AutomatonBuilder; </em>método <em>generateDFA</em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<pre>public Automaton generateDFA(Automaton pNDAutomaton) {
+
+&nbsp;&nbsp; &nbsp;List&lt;SubSetState&gt; estadosAFD = new LinkedList&lt;SubSetState&gt;();
+&nbsp;&nbsp; &nbsp;// calcular cierre-epsilon del estado inicial
+&nbsp;&nbsp; &nbsp;SubSetState S1 = epsilonClosure(pNDAutomaton.getInitialState());
+&nbsp;&nbsp; &nbsp;S1.setInitial(true);
+&nbsp;&nbsp; &nbsp;estadosAFD.add(S1);</pre>
+<pre>&nbsp;&nbsp; &nbsp;// obetener esatdo no marcado
+&nbsp;&nbsp; &nbsp;SubSetState subSetState = selectState(estadosAFD);
+
+&nbsp;&nbsp; &nbsp;// mientras haya estados no procesados o marcados
+&nbsp;&nbsp; &nbsp;while (subSetState != null) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; // por cada símbolo 'a' perteneciente al lenguaje
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  for (Transition t : pNDAutomaton.getAlphabet()) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!(t instanceof TransitionEmpty)) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// calcular a que estados se va con esta transición desde el
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// subonjutno de estados
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SubSetState moveState = epsilonMove(pNDAutomaton, subSetState, t);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!moveState.isEmpty()) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SubSetState moCloseState = epsilonClosure(moveState);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// comprueba si no existe ya este estado agrupado.
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SubSetState euqlState = findState(estadosAFD, moCloseState);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (euqlState == null) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;estadosAFD.add(moCloseState);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; moCloseState = euqlState;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Transition afdTransition;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afdTransition = (Transition) t.clone();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (CloneNotSupportedException e) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; throw new RuntimeException("Fallo en la copia de una transición.");
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; subSetState.getState().connect(afdTransition, moCloseState.getState());
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; subSetState.setMark(true);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; // siguiente estado sin marcar
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; subSetState = selectState(estadosAFD);
+&nbsp;&nbsp;  }
+&nbsp;&nbsp; &nbsp;// construir autómata determinista con los nuevos estados interconectados
+&nbsp;&nbsp; &nbsp;Automaton dfa = new Automaton(S1.getState());
+&nbsp;&nbsp; &nbsp;return dfa;
+}
+</pre>
+<p>El AFD resultante para la regexp anterior (<em>ab+</em>) es:</p>
+<p>&nbsp; <img id="pbImage268799" src="./arquitectura_spanish_files/rexgen_afd2.png" alt=""></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a class="pbTOC" name="nbsp"></a>&nbsp;</h3>
+<h3><a class="pbTOC" name="Ejecucióndelaregexp"></a>Ejecución de la regexp</h3>
+<h3><a class="pbTOC" name="nbsp"></a>&nbsp;</h3>
+<p>El último paso de la compilación es crear el objeto <em>Regex </em>y asignarle el objeto <em>Automaton, </em>que a su vez contiene el AFD generado. De esto se encarga el método compile de la clase <em>RegexEngine</em></p>
+<p>&nbsp;</p>
+<pre>public static Regex compile(String regexExpr) throws RegexException {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(regexExpr);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Parser syntaxAnalyzer = new Parser(lexicalAnalyzer);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;ASTNode syntaxNodeTree = syntaxAnalyzer.analyze();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;LOGGER.debug("Arbol sintáctico:\n graph g {\n{}\n};\n", syntaxNodeTree.toString());
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Automaton nfa = AutomatonBuilder.generateFromAST(syntaxNodeTree);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;LOGGER.debug("Autómata NO determinista:\n digraph afnd {\n{}\n};\n", nfa.toString());
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Automaton dfa = AutomatonBuilder.generateDFAFromNFA(nfa);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;LOGGER.debug("Autómata Determinista:\n digraph afnd {\n{}\n};\n", dfa.toString());
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return new Regex(dfa);
+}</pre>
+<p>&nbsp;</p>
+<p>Este método cubre todas las fases de compilación que se han explicado.<br><br>Ahora es el turno de ejecutar la regexp contra un texto. Esta tarea la lleva a cabo el propio objeto <em>Regex </em>en el método <em>match</em>:</p>
+<p>&nbsp;</p>
+<pre>public boolean match(char[] buffer, RegexMatchResult regexMatcher) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;boolean stop = false;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;boolean match = false;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// indice que apunta al comienzo de la coincidencia.
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;int matchStartPosition = -1;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// posicion actual
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;int position = 0;
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (regexMatcher != null) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;position = regexMatcher.getPosition();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// comienzo del automata
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;State currentState = finiteAutomaton.getInitialState();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// el autómata siempre quiere consumir caracteres
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;while (currentState.hasTransitions() &amp;&amp; (position &lt; buffer.length) &amp;&amp; !stop) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;char c = buffer[position];
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// enfrentar el carácter con la regex
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Transition transition = matchTransition((char) c, currentState);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (transition == null) { // no hay coincidencia
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// si de todas formas estamos en un estado final, entonces hay match
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (currentState.isEnd()) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;match = true;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;stop = true;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (matchStartPosition == -1) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;matchStartPosition = position;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;} else {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// reiniciar automata
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;currentState = finiteAutomaton.getInitialState();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;position++;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// no hay posicion de comienzo de region
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;matchStartPosition = -1;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;} else {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// coincide, avanzamos estado
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;currentState = transition.getNextState();
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// registramos la posicion de comienzo de la coincidencia. La regex se cumplirá si el estado es de aceptacion
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;match = currentState.isEnd();
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (matchStartPosition == -1) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;matchStartPosition = position;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;position++;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (match) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (regexMatcher != null) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;regexMatcher.setMatchStartPosition(matchStartPosition);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;regexMatcher.setMatchLength(position - matchStartPosition);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return match;
+&nbsp;&nbsp; &nbsp;}
+
+&nbsp;private Transition matchTransition(char c, State pState) {
+&nbsp;   Iterable&lt;Transition&gt; transitionList = pState.getTransitions();
+&nbsp;&nbsp;  if (transitionList != null) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; for (Transition t : pState.getTransitions()) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (t.match(c)) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return t;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; }
+&nbsp;&nbsp;  }
+&nbsp;&nbsp;  return null;
+
+}
+&nbsp;</pre>
+<h3><a class="pbTOC" name="Consideracionesfinales"></a>Consideraciones finales.</h3>
+<p>&nbsp;</p>
+<p>Un paso que no hemos implementado es la minimización del AFD, pero esta operación no siempre puede ser realizada.<br><br>Existen formas más sencillas de almacenar los autómatas, como usar matrices de adyacencia en lugar de listas. Esto implica una ganancia en el rendimiento de ejecución del autómata pero a cambio de un mayor uso de memoria.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+
+</body></html>

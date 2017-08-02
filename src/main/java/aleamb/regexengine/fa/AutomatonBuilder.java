@@ -40,579 +40,550 @@ import java.util.Queue;
  */
 public final class AutomatonBuilder {
 
-	/**
-	 * Genera un AFND a partir de la expresión regular.
-	 * 
-	 * @param node
-	 *            Nodo raíz del árbol sintáctico.
-	 * @return Un autómata finito no determinista.
-	 */
-	public static Automaton generateFromAST(ASTNode node) {
-
-		if (node == null || node.isEmpty()) {
-			throw new IllegalArgumentException(
-					"El árbol sintáctico es nulo o está vacío");
-		}
-
-		return new AutomatonBuilder().generateNFA(node);
-	}
-
-	/**
-	 * Generación de autómata no determinista a determinista usando algoritmo
-	 * subconjunto.
-	 * 
-	 * @param pNDAutomaton
-	 *            Autómata no determinista.
-	 * @return Nuevo autómata dterminista.
-	 */
-	public static Automaton generateDFAFromNFA(Automaton pNDAutomaton) {
-
-		return new AutomatonBuilder().generateDFA(pNDAutomaton);
-
-	}
-
-	private Automaton generateNFA(ASTNode node) {
-
-		ASTNode rootRegexNode = node.getChildren().iterator().next();
-
-		// generar el grafo del autómata. Se retorna el primer par de estados
-		StatePair statePair = faBuildRegexp(rootRegexNode);
-
-		statePair.getFirstState().setInitial(true);
-		statePair.getSecondState().setEnd(true);
-
-		// construir el autómata a partir de los estados obtenidos
-		Automaton nfa = new Automaton(statePair.getFirstState());
-
-		return nfa;
-	}
-
-	/**
-	 * Generación de autómata no determinista a determinista usando algoritmo de
-	 * generación de subconjuntos.
-	 * 
-	 * @param pNDAutomaton
-	 *            Autómata no determinista.
-	 * @return Nuevo autómata dterminista.
-	 */
-	public Automaton generateDFA(Automaton pNDAutomaton) {
-
-		List<SubSetState> estadosAFD = new LinkedList<SubSetState>();
-
-		// calcular cierre-epsilon del estado inicial
-		SubSetState S1 = epsilonClosure(pNDAutomaton.getInitialState());
-
-		S1.setInitial(true);
-
-		estadosAFD.add(S1);
-
-		// obetener esatdo no marcado
-		SubSetState subSetState = selectState(estadosAFD);
-
-		// mientras haya estados no procesados o marcados
-		while (subSetState != null) {
-
-			// por cada símbolo 'a' perteneciente al lenguaje
-			for (Transition t : pNDAutomaton.getAlphabet()) {
-
-				if (!(t instanceof TransitionEmpty)) {
-					// calcular a que estados se va con esta transición desde el
-					// subonjutno de estados
-					SubSetState moveState = epsilonMove(pNDAutomaton,
-							subSetState, t);
-					if (!moveState.isEmpty()) {
-						SubSetState moCloseState = epsilonClosure(moveState);
-
-						// comprueba si no existe ya este estado agrupado.
-						SubSetState euqlState = findState(estadosAFD,
-								moCloseState);
-						if (euqlState == null) {
-							estadosAFD.add(moCloseState);
-						} else {
-							moCloseState = euqlState;
-						}
-						Transition afdTransition;
-						try {
-							afdTransition = (Transition) t.clone();
-						} catch (CloneNotSupportedException e) {
-							throw new RuntimeException(
-									"Fallo en la copia de una transición.");
-						}
-						subSetState.getState().connect(afdTransition,
-								moCloseState.getState());
-
-					}
-				}
-			}
-			subSetState.setMark(true);
-			// siguiente estado sin marcar
-			subSetState = selectState(estadosAFD);
-
-		}
-
-		// construir autómata con los nuevos estados interconectados
-		Automaton dfa = new Automaton(S1.getState());
-		return dfa;
-	}
-
-	// comienzo métodos de construccion del semántica del AF
-
-	/**
-	 * Construye los estados correspondientes al nodo sintáctico <regexp>
-	 * 
-	 * Debido a que cada expresión de la regex es independiente de la anterior,
-	 * cada rama de nodo será construída haciendo un anaĺisis en profundidad y,
-	 * una vez construídos todos los estados y tarsnciones, se almacenarán en ua
-	 * cola para ir enlazando uno de tras de otro.
-	 * 
-	 * @param pNode
-	 *            Nodo del árbol sintáctico.
-	 * @return Par de estados que representan la expresión regular como AFN
-	 */
-	private StatePair faBuildRegexp(ASTNode pNode) {
-
-		StatePair headStatePair = null;
-
-		Queue<StatePair> statePairsQueue = new LinkedList<StatePair>();
-
-		for (ASTNode childNode : pNode.getChildren()) {
-
-			if (childNode.getType().equals(Token.QUANTIFIED_EXPR)) {
-
-				StatePair newExpressionPair = faBuildQuantifiedExpression(childNode);
-				// añadir subconjunto de estados del autómata a la cola para
-				// unir todos posteriormente. Esto respeta el orden de
-				// prioiridad
-				// de primero las expresiones y luego el OR
-				statePairsQueue.add(newExpressionPair);
-
-			} else if (childNode.getType().equals(Token.REGEX)) {
-
-				StatePair regexpPair = faBuildRegex(childNode, statePairsQueue);
-
-				// conectamos todos los estados anteriores, que forman r1
-				StatePair orStatePair = null;
-				headStatePair = statePairsQueue.poll();
-				orStatePair = headStatePair;
-				while (!statePairsQueue.isEmpty()) {
-					StatePair newStatePair = statePairsQueue.poll();
-					orStatePair.getSecondState().connect(
-							createEmptyTransition(),
-							newStatePair.getFirstState());
-					orStatePair = newStatePair;
-				}
-
-				/*
-				 * ahora r1 es un solo autómata que unimos al autómata del
-				 * segundo operador del OR
-				 */
+    /**
+     * Genera un AFND a partir de la expresión regular.
+     * 
+     * @param node
+     *            Nodo raíz del árbol sintáctico.
+     * @return Un autómata finito no determinista.
+     */
+    public static Automaton generateFromAST(ASTNode node) {
+
+        if (node == null || node.isEmpty()) {
+            throw new IllegalArgumentException("El árbol sintáctico es nulo o está vacío");
+        }
+
+        return new AutomatonBuilder().generateNFA(node);
+    }
+
+    /**
+     * Generación de autómata no determinista a determinista usando algoritmo
+     * subconjunto.
+     * 
+     * @param pNDAutomaton
+     *            Autómata no determinista.
+     * @return Nuevo autómata dterminista.
+     */
+    public static Automaton generateDFAFromNFA(Automaton pNDAutomaton) {
+
+        return new AutomatonBuilder().generateDFA(pNDAutomaton);
+
+    }
+
+    private Automaton generateNFA(ASTNode node) {
+
+        ASTNode rootRegexNode = node.getChildren().iterator().next();
+
+        // generar el grafo del autómata. Se retorna el primer par de estados
+        StatePair statePair = faBuildRegexp(rootRegexNode);
+
+        statePair.getFirstState().setInitial(true);
+        statePair.getSecondState().setEnd(true);
+
+        // construir el autómata a partir de los estados obtenidos
+        Automaton nfa = new Automaton(statePair.getFirstState());
+
+        return nfa;
+    }
+
+    /**
+     * Generación de autómata no determinista a determinista usando algoritmo de
+     * generación de subconjuntos.
+     * 
+     * @param pNDAutomaton
+     *            Autómata no determinista.
+     * @return Nuevo autómata dterminista.
+     */
+    public Automaton generateDFA(Automaton pNDAutomaton) {
+
+        List<SubSetState> estadosAFD = new LinkedList<SubSetState>();
+
+        // calcular cierre-epsilon del estado inicial
+        SubSetState S1 = epsilonClosure(pNDAutomaton.getInitialState());
+
+        S1.setInitial(true);
+
+        estadosAFD.add(S1);
+
+        // obetener esatdo no marcado
+        SubSetState subSetState = selectState(estadosAFD);
+
+        // mientras haya estados no procesados o marcados
+        while (subSetState != null) {
+
+            // por cada símbolo 'a' perteneciente al lenguaje
+            for (Transition t : pNDAutomaton.getAlphabet()) {
+
+                if (!(t instanceof TransitionEmpty)) {
+                    // calcular a que estados se va con esta transición desde el
+                    // subonjutno de estados
+                    SubSetState moveState = epsilonMove(pNDAutomaton, subSetState, t);
+                    if (!moveState.isEmpty()) {
+                        SubSetState moCloseState = epsilonClosure(moveState);
+
+                        // comprueba si no existe ya este estado agrupado.
+                        SubSetState euqlState = findState(estadosAFD, moCloseState);
+                        if (euqlState == null) {
+                            estadosAFD.add(moCloseState);
+                        } else {
+                            moCloseState = euqlState;
+                        }
+                        Transition afdTransition;
+                        try {
+                            afdTransition = (Transition) t.clone();
+                        } catch (CloneNotSupportedException e) {
+                            throw new RuntimeException("Fail copying transition");
+                        }
+                        subSetState.getState().connect(afdTransition, moCloseState.getState());
+
+                    }
+                }
+            }
+            subSetState.setMark(true);
+            // siguiente estado sin marcar
+            subSetState = selectState(estadosAFD);
+
+        }
+
+        // construir autómata con los nuevos estados interconectados
+        Automaton dfa = new Automaton(S1.getState());
+        return dfa;
+    }
+
+    // comienzo métodos de construccion del semántica del AF
+
+    /**
+     * Construye los estados correspondientes al nodo sintáctico <regexp>
+     * 
+     * Debido a que cada expresión de la regex es independiente de la anterior,
+     * cada rama de nodo será construída haciendo un anaĺisis en profundidad y,
+     * una vez construídos todos los estados y tarsnciones, se almacenarán en ua
+     * cola para ir enlazando uno de tras de otro.
+     * 
+     * @param pNode
+     *            Nodo del árbol sintáctico.
+     * @return Par de estados que representan la expresión regular como AFN
+     */
+    private StatePair faBuildRegexp(ASTNode pNode) {
+
+        StatePair headStatePair = null;
+
+        Queue<StatePair> statePairsQueue = new LinkedList<StatePair>();
+
+        for (ASTNode childNode : pNode.getChildren()) {
 
-				State q0 = new State();
-				State q1 = new State();
-				q0.connect(createEmptyTransition(),
-						headStatePair.getFirstState());
+            if (childNode.getType().equals(Token.QUANTIFIED_EXPR)) {
 
-				q0.connect(createEmptyTransition(), regexpPair.getFirstState());
-
-				regexpPair.getSecondState()
-						.connect(createEmptyTransition(), q1);
-				orStatePair.getSecondState().connect(createEmptyTransition(),
-						q1);
-				StatePair pipeStatePair = new StatePair(q0, q1);
-				statePairsQueue.add(pipeStatePair);
-			}
-		}
-
-		/*
-		 * Se unen todos los subconjuntos de estados obtenidos a partir de los
-		 * nodos sintácticos analizados.
-		 * 
-		 * Estos son los nodos tipo <qualified_expression> que aún hay que
-		 * procesar.
-		 */
-		headStatePair = statePairsQueue.poll();
-		StatePair tmpPair = headStatePair;
+                StatePair newExpressionPair = faBuildQuantifiedExpression(childNode);
+                // añadir subconjunto de estados del autómata a la cola para
+                // unir todos posteriormente. Esto respeta el orden de
+                // prioiridad
+                // de primero las expresiones y luego el OR
+                statePairsQueue.add(newExpressionPair);
 
-		while (!statePairsQueue.isEmpty()) {
-
-			StatePair pair = statePairsQueue.poll();
+            } else if (childNode.getType().equals(Token.REGEX)) {
 
-			tmpPair.getSecondState().connect(createEmptyTransition(),
-					pair.getFirstState());
-			tmpPair = pair;
-		}
+                StatePair regexpPair = faBuildRegex(childNode, statePairsQueue);
 
-		headStatePair.setSecondState(tmpPair.getSecondState());
+                // conectamos todos los estados anteriores, que forman r1
+                StatePair orStatePair = null;
+                headStatePair = statePairsQueue.poll();
+                orStatePair = headStatePair;
+                while (!statePairsQueue.isEmpty()) {
+                    StatePair newStatePair = statePairsQueue.poll();
+                    orStatePair.getSecondState().connect(createEmptyTransition(), newStatePair.getFirstState());
+                    orStatePair = newStatePair;
+                }
 
-		return headStatePair;
-	}
+                /*
+                 * ahora r1 es un solo autómata que unimos al autómata del
+                 * segundo operador del OR
+                 */
 
-	/**
-	 * Procesa el nodo de la produccion auxiliar <regex>
-	 * 
-	 * Si se ha llegado aquí, necesariamnete ha habido una sentencia OR en la
-	 * regexp.
-	 * 
-	 * @param regexNode
-	 * @param statePairsQueue
-	 * @return
-	 */
-	private StatePair faBuildRegex(ASTNode regexNode,
-			Queue<StatePair> statePairsQueue) {
+                State q0 = new State();
+                State q1 = new State();
+                q0.connect(createEmptyTransition(), headStatePair.getFirstState());
 
-		// si se ha llegdo aqui, hay que procesar un OR
+                q0.connect(createEmptyTransition(), regexpPair.getFirstState());
 
-		Iterator<ASTNode> childNodes = regexNode.getChildren().iterator();
+                regexpPair.getSecondState().connect(createEmptyTransition(), q1);
+                orStatePair.getSecondState().connect(createEmptyTransition(), q1);
+                StatePair pipeStatePair = new StatePair(q0, q1);
+                statePairsQueue.add(pipeStatePair);
+            }
+        }
 
-		// saltar nodo pipe
-		childNodes.next();
-		ASTNode regexpNode = childNodes.next();
+        /*
+         * Se unen todos los subconjuntos de estados obtenidos a partir de los
+         * nodos sintácticos analizados.
+         * 
+         * Estos son los nodos tipo <qualified_expression> que aún hay que
+         * procesar.
+         */
+        headStatePair = statePairsQueue.poll();
+        StatePair tmpPair = headStatePair;
 
-		// si hay un PIPE, debe haber un nodo hermano que sea <regexp>
-		StatePair regexpPair = faBuildRegexp(regexpNode);
+        while (!statePairsQueue.isEmpty()) {
 
-		return regexpPair;
+            StatePair pair = statePairsQueue.poll();
 
-	}
+            tmpPair.getSecondState().connect(createEmptyTransition(), pair.getFirstState());
+            tmpPair = pair;
+        }
 
-	private StatePair faBuildQuantifiedExpression(ASTNode quantifiedExpression) {
+        headStatePair.setSecondState(tmpPair.getSecondState());
 
-		StatePair headStatePair = null;
-		StatePair expressionPair = null;
+        return headStatePair;
+    }
 
-		for (ASTNode child : quantifiedExpression.getChildren()) {
+    /**
+     * Procesa el nodo de la produccion auxiliar <regex>
+     * 
+     * Si se ha llegado aquí, necesariamnete ha habido una sentencia OR en la
+     * regexp.
+     * 
+     * @param regexNode
+     * @param statePairsQueue
+     * @return
+     */
+    private StatePair faBuildRegex(ASTNode regexNode, Queue<StatePair> statePairsQueue) {
 
-			if (child.getType() == Token.EXPRESSION) {
+        // si se ha llegdo aqui, hay que procesar un OR
 
-				StatePair newExpressionPair = faBuildExpression(child);
+        Iterator<ASTNode> childNodes = regexNode.getChildren().iterator();
 
-				if (expressionPair != null) {
-					Transition t = createEmptyTransition();
-					expressionPair.getSecondState().connect(t,
-							newExpressionPair.getFirstState());
+        // saltar nodo pipe
+        childNodes.next();
+        ASTNode regexpNode = childNodes.next();
 
-				}
-				expressionPair = newExpressionPair;
+        // si hay un PIPE, debe haber un nodo hermano que sea <regexp>
+        StatePair regexpPair = faBuildRegexp(regexpNode);
 
-			} else {
-				// el nodo es de tipo cuantificador
-				if (child.getValue().equals("+")) {
+        return regexpPair;
 
-					Transition t = createEmptyTransition();
+    }
 
-					expressionPair.getSecondState().connect(t,
-							expressionPair.getFirstState());
+    private StatePair faBuildQuantifiedExpression(ASTNode quantifiedExpression) {
 
-				} else if (child.getValue().equals("*")) {
+        StatePair headStatePair = null;
+        StatePair expressionPair = null;
 
-					// conectar primero con ultimo con una transicion vacia
-					Transition t = createEmptyTransition();
-					expressionPair.getSecondState().connect(t,
-							expressionPair.getFirstState());
+        for (ASTNode child : quantifiedExpression.getChildren()) {
 
-					// crear dos nuevos estados para '*'
-					State q0 = new State();
-					State q1 = new State();
+            if (child.getType() == Token.EXPRESSION) {
 
-					q0.connect(createEmptyTransition(),
-							expressionPair.getFirstState());
+                StatePair newExpressionPair = faBuildExpression(child);
 
-					expressionPair.getSecondState().connect(
-							createEmptyTransition(), q1);
-					q0.connect(createEmptyTransition(), q1);
-					expressionPair.setFirstState(q0);
-					expressionPair.setSecondState(q1);
+                if (expressionPair != null) {
+                    Transition t = createEmptyTransition();
+                    expressionPair.getSecondState().connect(t, newExpressionPair.getFirstState());
 
-				} else { // tipo '?'
-					expressionPair.getFirstState().connect(
-							createEmptyTransition(),
-							expressionPair.getSecondState());
+                }
+                expressionPair = newExpressionPair;
 
-				}
+            } else {
+                // el nodo es de tipo cuantificador
+                if (child.getValue().equals("+")) {
 
-			}
-			if (headStatePair == null) {
-				headStatePair = expressionPair;
-			}
-		}
+                    Transition t = createEmptyTransition();
 
-		return headStatePair;
+                    expressionPair.getSecondState().connect(t, expressionPair.getFirstState());
 
-	}
+                } else if (child.getValue().equals("*")) {
 
-	private StatePair faBuildExpression(ASTNode node) {
+                    // conectar primero con ultimo con una transicion vacia
+                    Transition t = createEmptyTransition();
+                    expressionPair.getSecondState().connect(t, expressionPair.getFirstState());
 
-		StatePair lastStates = null;
+                    // crear dos nuevos estados para '*'
+                    State q0 = new State();
+                    State q1 = new State();
 
-		ASTNode child = node.getChildren().iterator().next();
+                    q0.connect(createEmptyTransition(), expressionPair.getFirstState());
 
-		if (child.getType() == Token.SELECTOR) {
+                    expressionPair.getSecondState().connect(createEmptyTransition(), q1);
+                    q0.connect(createEmptyTransition(), q1);
+                    expressionPair.setFirstState(q0);
+                    expressionPair.setSecondState(q1);
 
-			lastStates = faBuildSelector(child);
-		} else if (child.getType() == Token.GROUP) {
-			lastStates = faBuildGroup(child);
-		}
-		return lastStates;
-	}
+                } else { // tipo '?'
+                    expressionPair.getFirstState().connect(createEmptyTransition(), expressionPair.getSecondState());
 
-	private StatePair faBuildGroup(ASTNode node) {
-		ASTNode regexNode = node.getChildren().iterator().next();
-		return faBuildRegexp(regexNode);
-	}
+                }
 
-	private StatePair faBuildSelector(ASTNode node) {
-		ASTNode child = node.getChildren().iterator().next();
-		StatePair statePair = null;
+            }
+            if (headStatePair == null) {
+                headStatePair = expressionPair;
+            }
+        }
 
-		if (child.getType() == Token.RANGE) {
-			statePair = faBuildRange(child);
-		} else {
-			statePair = faBuildChar(node);
-		}
-		return statePair;
-	}
-
-	private StatePair faBuildChar(ASTNode pNode) {
-
-		char character = pNode.getValue().charAt(0);
-		char initChar;
-		char endChar;
-
-		if (character == '.') {
-			initChar = ' ';
-			endChar = Character.MAX_VALUE;
-		} else {
-			initChar = endChar = character;
-		}
+        return headStatePair;
 
-		Transition t = new TransitionRange(initChar, endChar);
-		State init = new State();
-		State end = new State();
+    }
 
-		init.connect(t, end);
+    private StatePair faBuildExpression(ASTNode node) {
 
-		return new StatePair(init, end);
+        StatePair lastStates = null;
 
-	}
+        ASTNode child = node.getChildren().iterator().next();
 
-	private StatePair faBuildRange(ASTNode node) {
+        if (child.getType() == Token.SELECTOR) {
 
-		ASTNode child = node.getChildren().iterator().next();
-		return faBuildCharRange(child);
+            lastStates = faBuildSelector(child);
+        } else if (child.getType() == Token.GROUP) {
+            lastStates = faBuildGroup(child);
+        }
+        return lastStates;
+    }
 
-	}
+    private StatePair faBuildGroup(ASTNode node) {
+        ASTNode regexNode = node.getChildren().iterator().next();
+        return faBuildRegexp(regexNode);
+    }
 
-	/*
-	 * Para la construcción de los rangos se realiza un pequeño análisis
-	 * semántico de los valores del rango y la posición del gui�n.
-	 */
-	private StatePair faBuildCharRange(ASTNode charRange) {
+    private StatePair faBuildSelector(ASTNode node) {
+        ASTNode child = node.getChildren().iterator().next();
+        StatePair statePair = null;
 
-		ASTNode[] childNodes = new ASTNode[charRange.getChildrenCount()];
-		int i = 0;
-		for (ASTNode astNode : charRange.getChildren()) {
-			childNodes[i++] = astNode;
-		}
-		i = 0;
+        if (child.getType() == Token.RANGE) {
+            statePair = faBuildRange(child);
+        } else {
+            statePair = faBuildChar(node);
+        }
+        return statePair;
+    }
 
-		State firstState = new State();
-		State secondState = new State();
+    private StatePair faBuildChar(ASTNode pNode) {
 
-		StringBuilder excludeChars = null;
+        char character = pNode.getValue().charAt(0);
+        char initChar;
+        char endChar;
 
-		ASTNode firstChildNode = childNodes[0];
-		int nChilds = childNodes.length;
+        if (character == '.') {
+            initChar = ' ';
+            endChar = Character.MAX_VALUE;
+        } else {
+            initChar = endChar = character;
+        }
 
-		boolean excludeRange = (firstChildNode.getType() != Token.ESCAPE && firstChildNode
-				.getValue().equals("^"));
+        Transition t = new TransitionRange(initChar, endChar);
+        State init = new State();
+        State end = new State();
 
-		if (excludeRange) {
-			excludeChars = new StringBuilder();
-			i = 1;
-		}
-
-		while (i < childNodes.length) {
-
-			// comprobar si viene un rango
-			if (i + 2 < nChilds && childNodes[i + 1].getValue().equals("-")
-					&& childNodes[i + 2].getType() != Token.ESCAPE) {
-
-				char initChar = childNodes[i].getValue().charAt(0);
-				char endChar = childNodes[i + 2].getValue().charAt(0);
-
-				Transition t = null;
-
-				if (excludeRange) {
-					t = new TransitionExcludeRange(initChar, endChar);
-				} else {
-					if (endChar < initChar) {
-						throw new RegexException("Rango no válido en "
-								+ childNodes[i + 2].getPositionInRegex());
-					}
-					t = new TransitionRange(initChar, endChar);
-				}
-				firstState.connect(t, secondState);
-				i += 3;
-
-			} else {
-				char rangeChar = childNodes[i].getValue().charAt(0);
+        init.connect(t, end);
 
-				if (excludeRange) {
-					excludeChars.append(rangeChar);
-				} else {
-					TransitionRange transitionRange = new TransitionRange(
-							rangeChar, rangeChar);
-					firstState.connect(transitionRange, secondState);
-				}
-				i++;
-			}
-		}
-		if (excludeRange && excludeChars.length() > 0) {
-			TransitionExclude transitionExclude = new TransitionExclude(
-					excludeChars.toString().toCharArray());
-			firstState.connect(transitionExclude, secondState);
-		}
-
-		return new StatePair(firstState, secondState);
-	}
-
-	// ///////////////////
-	// métodos para el algoritmo subconjunto
-
-	private SubSetState epsilonClosure(State state) {
-
-		Set<State> closureSet = new HashSet<State>();
-		epsilonClosure(state, closureSet, createEmptyTransition());
-
-		SubSetState subSetState = new SubSetState(closureSet);
-		subSetState.getState().setEnd(verifyFinalStates(subSetState));
-
-		return subSetState;
+        return new StatePair(init, end);
 
-	}
+    }
 
-	private void epsilonClosure(State state, Set<State> closureSet,
-			Transition sourceTransition) {
+    private StatePair faBuildRange(ASTNode node) {
 
-		if (state.getTransitions() != null) {
-			for (Transition t : state.getTransitions()) {
-				if (sourceTransition.equals(t)) {
-					epsilonClosure(t.getNextState(), closureSet,
-							sourceTransition);
-				}
-			}
-		}
-
-		closureSet.add(state);
-
-	}
-
-	private SubSetState selectState(List<SubSetState> DFAstates) {
-
-		for (SubSetState subSetState : DFAstates) {
-
-			if (!subSetState.isMark()) {
-				return subSetState;
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * Movimiento de S. Sienod S un estado agrupado.
-	 * 
-	 * Retorna el subconjunto de estados a los que llevan los estados de
-	 * pSubSetState con la transición indicada.
-	 * 
-	 * @param fa
-	 *            autómata
-	 * @param pSubSetState
-	 *            Estados a verificar.
-	 * @param t
-	 *            Transitión.
-	 * @return Estado {@link SubSetState} que agrupa ese conjunto de estados.
-	 */
-	private SubSetState epsilonMove(Automaton fa, SubSetState pSubSetState,
-			Transition t) {
-
-		Set<State> moveStates = new HashSet<State>();
-		for (State state : pSubSetState.getStates()) {
-
-			searchStatesByTransition(state, t, moveStates);
-		}
-
-		SubSetState subSetState = new SubSetState(moveStates);
-
-		return subSetState;
-
-	}
-
-	/*
-	 * Obtener todos los estados a los que se puede llegar desde state con
-	 * transision testTransition
-	 */
-	private void searchStatesByTransition(State state,
-			Transition testTransition, Set<State> pEpsilonMoveStates) {
-
-		if (state == null) {
-			return;
-		}
-
-		if (state.getTransitions() != null) {
-			for (Transition t : state.getTransitions()) {
-				if (t.equals(testTransition)) {
-					pEpsilonMoveStates.add(t.getNextState());
-				} else if (t instanceof TransitionEmpty) {
-					searchStatesByTransition(t.getNextState(), testTransition,
-							pEpsilonMoveStates);
-				}
-
-			}
-		}
-	}
-
-	/*
-	 * Cierre epsilon de un estado agrupado.
-	 */
-	private SubSetState epsilonClosure(SubSetState subSetState) {
-
-		Set<State> states = new HashSet<State>();
-
-		for (State state : subSetState.getStates()) {
-			states.addAll(epsilonClosure(state).getStates());
-		}
-
-		SubSetState closureSubSet = new SubSetState(states);
-
-		// comprueba si alguno de los estados es final para marcar
-		// el estado superconjunto como final.
-
-		closureSubSet.getState().setEnd(verifyFinalStates(closureSubSet));
-
-		return closureSubSet;
-	}
-
-	private boolean verifyFinalStates(SubSetState subSetState) {
-		for (State state : subSetState.getStates()) {
-			if (state.isEnd()) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	private SubSetState findState(List<SubSetState> DFAstates,
-			SubSetState closureState) {
-		for (SubSetState subSetState : DFAstates) {
-			if (subSetState.equals(closureState)) {
-				return subSetState;
-			}
-		}
-		return null;
-	}
-
-	private Transition createEmptyTransition() {
-		return new TransitionEmpty();
-	}
+        ASTNode child = node.getChildren().iterator().next();
+        return faBuildCharRange(child);
+
+    }
+
+    /*
+     * Para la construcción de los rangos se realiza un pequeño análisis
+     * semántico de los valores del rango y la posición del gui�n.
+     */
+    private StatePair faBuildCharRange(ASTNode charRange) {
+
+        ASTNode[] childNodes = new ASTNode[charRange.getChildrenCount()];
+        int i = 0;
+        for (ASTNode astNode : charRange.getChildren()) {
+            childNodes[i++] = astNode;
+        }
+        i = 0;
+
+        State firstState = new State();
+        State secondState = new State();
+
+        StringBuilder excludeChars = null;
+
+        ASTNode firstChildNode = childNodes[0];
+        int nChilds = childNodes.length;
+
+        boolean excludeRange = (firstChildNode.getType() != Token.ESCAPE && firstChildNode.getValue().equals("^"));
+
+        if (excludeRange) {
+            excludeChars = new StringBuilder();
+            i = 1;
+        }
+
+        while (i < childNodes.length) {
+
+            // comprobar si viene un rango
+            if (i + 2 < nChilds && childNodes[i + 1].getValue().equals("-")
+                    && childNodes[i + 2].getType() != Token.ESCAPE) {
+
+                char initChar = childNodes[i].getValue().charAt(0);
+                char endChar = childNodes[i + 2].getValue().charAt(0);
+
+                Transition t = null;
+
+                if (excludeRange) {
+                    t = new TransitionExcludeRange(initChar, endChar);
+                } else {
+                    if (endChar < initChar) {
+                        throw new RegexException("Rango no válido en " + childNodes[i + 2].getPositionInRegex());
+                    }
+                    t = new TransitionRange(initChar, endChar);
+                }
+                firstState.connect(t, secondState);
+                i += 3;
+
+            } else {
+                char rangeChar = childNodes[i].getValue().charAt(0);
+
+                if (excludeRange) {
+                    excludeChars.append(rangeChar);
+                } else {
+                    TransitionRange transitionRange = new TransitionRange(rangeChar, rangeChar);
+                    firstState.connect(transitionRange, secondState);
+                }
+                i++;
+            }
+        }
+        if (excludeRange && excludeChars.length() > 0) {
+            TransitionExclude transitionExclude = new TransitionExclude(excludeChars.toString().toCharArray());
+            firstState.connect(transitionExclude, secondState);
+        }
+
+        return new StatePair(firstState, secondState);
+    }
+
+    // ///////////////////
+    // métodos para el algoritmo subconjunto
+
+    private SubSetState epsilonClosure(State state) {
+
+        Set<State> closureSet = new HashSet<State>();
+        epsilonClosure(state, closureSet, createEmptyTransition());
+
+        SubSetState subSetState = new SubSetState(closureSet);
+        subSetState.getState().setEnd(verifyFinalStates(subSetState));
+
+        return subSetState;
+
+    }
+
+    private void epsilonClosure(State state, Set<State> closureSet, Transition sourceTransition) {
+
+        if (state.getTransitions() != null) {
+            for (Transition t : state.getTransitions()) {
+                if (sourceTransition.equals(t)) {
+                    epsilonClosure(t.getNextState(), closureSet, sourceTransition);
+                }
+            }
+        }
+
+        closureSet.add(state);
+
+    }
+
+    private SubSetState selectState(List<SubSetState> DFAstates) {
+
+        for (SubSetState subSetState : DFAstates) {
+
+            if (!subSetState.isMark()) {
+                return subSetState;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Movimiento de S. Sienod S un estado agrupado.
+     * 
+     * Retorna el subconjunto de estados a los que llevan los estados de
+     * pSubSetState con la transición indicada.
+     * 
+     * @param fa
+     *            autómata
+     * @param pSubSetState
+     *            Estados a verificar.
+     * @param t
+     *            Transitión.
+     * @return Estado {@link SubSetState} que agrupa ese conjunto de estados.
+     */
+    private SubSetState epsilonMove(Automaton fa, SubSetState pSubSetState, Transition t) {
+
+        Set<State> moveStates = new HashSet<State>();
+        for (State state : pSubSetState.getStates()) {
+
+            searchStatesByTransition(state, t, moveStates);
+        }
+
+        SubSetState subSetState = new SubSetState(moveStates);
+
+        return subSetState;
+
+    }
+
+    /*
+     * Obtener todos los estados a los que se puede llegar desde state con
+     * transision testTransition
+     */
+    private void searchStatesByTransition(State state, Transition testTransition, Set<State> pEpsilonMoveStates) {
+
+        if (state == null) {
+            return;
+        }
+
+        if (state.getTransitions() != null) {
+            for (Transition t : state.getTransitions()) {
+                if (t.equals(testTransition)) {
+                    pEpsilonMoveStates.add(t.getNextState());
+                } else if (t instanceof TransitionEmpty) {
+                    searchStatesByTransition(t.getNextState(), testTransition, pEpsilonMoveStates);
+                }
+
+            }
+        }
+    }
+
+    /*
+     * Cierre epsilon de un estado agrupado.
+     */
+    private SubSetState epsilonClosure(SubSetState subSetState) {
+
+        Set<State> states = new HashSet<State>();
+
+        for (State state : subSetState.getStates()) {
+            states.addAll(epsilonClosure(state).getStates());
+        }
+
+        SubSetState closureSubSet = new SubSetState(states);
+
+        // comprueba si alguno de los estados es final para marcar
+        // el estado superconjunto como final.
+
+        closureSubSet.getState().setEnd(verifyFinalStates(closureSubSet));
+
+        return closureSubSet;
+    }
+
+    private boolean verifyFinalStates(SubSetState subSetState) {
+        for (State state : subSetState.getStates()) {
+            if (state.isEnd()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private SubSetState findState(List<SubSetState> DFAstates, SubSetState closureState) {
+        for (SubSetState subSetState : DFAstates) {
+            if (subSetState.equals(closureState)) {
+                return subSetState;
+            }
+        }
+        return null;
+    }
+
+    private Transition createEmptyTransition() {
+        return new TransitionEmpty();
+    }
 
 }

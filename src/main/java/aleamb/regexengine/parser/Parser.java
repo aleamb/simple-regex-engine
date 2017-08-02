@@ -50,269 +50,266 @@ package aleamb.regexengine.parser;
 
 public class Parser {
 
-	private LexicalAnalyzer lexicalAnalyzer;
-	private Token token;
-
-	public Parser(LexicalAnalyzer pLexicalAnalyzer) {
-		lexicalAnalyzer = pLexicalAnalyzer;
-	}
-
-	public ASTNode analyze() {
+    private LexicalAnalyzer lexicalAnalyzer;
+    private Token token;
 
-		// un símbolo adelantado
-		readNextToken();
+    public Parser(LexicalAnalyzer pLexicalAnalyzer) {
+        lexicalAnalyzer = pLexicalAnalyzer;
+    }
 
-		if (token == null) {
-			throw new SyntaxException("Regex vacía.");
-		}
-		// nodo raíz del árbol sintáctico.
-		ASTNode root = createNode(Token.ROOT);
+    public ASTNode analyze() {
 
-		// entramos por la producción principal. A partir de ahí la recursión de
-		// producciones consumirá los tokens.
-		ASTNode n = prRegexp();
+        // un símbolo adelantado
+        readNextToken();
 
-		// análisis sintáctico terminado. Añadir al nodo raiz el nodo padre del
-		// árbol sintáctico.
-		addChildNode(root, n);
+        if (token == null) {
+            throw new SyntaxException("Regex vacía.");
+        }
+        // nodo raíz del árbol sintáctico.
+        ASTNode root = createNode(Token.ROOT);
 
-		// no debería haber más tokens si el parseo ha sido correcto.
-		if (token != null) {
-			parseError("Expresión no balanceada.");
-		}
+        // entramos por la producción principal. A partir de ahí la recursión de
+        // producciones consumirá los tokens.
+        ASTNode n = prRegexp();
 
-		return root;
+        // análisis sintáctico terminado. Añadir al nodo raiz el nodo padre del
+        // árbol sintáctico.
+        addChildNode(root, n);
 
-	}
+        // no debería haber más tokens si el parseo ha sido correcto.
+        if (token != null) {
+            parseError("Expresión no balanceada.");
+        }
 
-	private ASTNode prRegexp() {
-		ASTNode node = createNode(Token.REGEXP);
+        return root;
 
-		// al menos un quantified_expression. Es necesario verificar el primero
-		// y si no hay, entonces es un error sintáctico
+    }
 
-		if (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET,
-				Token.L_PARENTHESIS)) {
-			ASTNode n = prQuantifiedExpression();
-			addChildNode(node, n);
-		} else {
-			parseError(Token.CHAR, Token.ESCAPE, Token.L_BRACKET,
-					Token.L_PARENTHESIS);
-		}
+    private ASTNode prRegexp() {
+        ASTNode node = createNode(Token.REGEXP);
 
-		// seguido de cero o más.
-		while (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET,
-				Token.L_PARENTHESIS)) {
-			ASTNode n = prQuantifiedExpression();
-			addChildNode(node, n);
-		}
-		// ahora un <regex>
-		ASTNode regexNode = prRegex();
+        // al menos un quantified_expression. Es necesario verificar el primero
+        // y si no hay, entonces es un error sintáctico
 
-		// que puede ser palabra vacia
-		if (regexNode != null) {
-			addChildNode(node, regexNode);
-		}
+        if (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS)) {
+            ASTNode n = prQuantifiedExpression();
+            addChildNode(node, n);
+        } else {
+            parseError(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS);
+        }
 
-		return node;
-	}
+        // seguido de cero o más.
+        while (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS)) {
+            ASTNode n = prQuantifiedExpression();
+            addChildNode(node, n);
+        }
+        // ahora un <regex>
+        ASTNode regexNode = prRegex();
 
-	private ASTNode prRegex() {
+        // que puede ser palabra vacia
+        if (regexNode != null) {
+            addChildNode(node, regexNode);
+        }
 
-		ASTNode node = createNode(Token.REGEX);
+        return node;
+    }
 
-		if (match(Token.PIPE)) {
-			consume(Token.PIPE);
-			ASTNode n = createNode(Token.PIPE);
-			addChildNode(node, n);
-			n = prRegexp();
-			addChildNode(node, n);
-		} else {
-			node = null;
-		}
+    private ASTNode prRegex() {
 
-		// o palabra vacia
+        ASTNode node = createNode(Token.REGEX);
 
-		return node;
-	}
+        if (match(Token.PIPE)) {
+            consume(Token.PIPE);
+            ASTNode n = createNode(Token.PIPE);
+            addChildNode(node, n);
+            n = prRegexp();
+            addChildNode(node, n);
+        } else {
+            node = null;
+        }
 
-	private ASTNode prQuantifiedExpression() {
+        // o palabra vacia
 
-		ASTNode node = createNode(Token.QUANTIFIED_EXPR);
+        return node;
+    }
 
-		// debe venir una expression
-		ASTNode n = prExpression();
-		addChildNode(node, n);
+    private ASTNode prQuantifiedExpression() {
 
-		// opcionalmente puede venir un cuantificador
-		if (match(Token.QUANTIFIER)) {
-			addChildNode(node, Token.QUANTIFIER);
-			consume(Token.QUANTIFIER);
-		}
-		return node;
-	}
+        ASTNode node = createNode(Token.QUANTIFIED_EXPR);
 
-	private ASTNode prExpression() {
+        // debe venir una expression
+        ASTNode n = prExpression();
+        addChildNode(node, n);
 
-		ASTNode node = createNode(Token.EXPRESSION);
-		if (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET)) {
+        // opcionalmente puede venir un cuantificador
+        if (match(Token.QUANTIFIER)) {
+            addChildNode(node, Token.QUANTIFIER);
+            consume(Token.QUANTIFIER);
+        }
+        return node;
+    }
 
-			ASTNode n = prSelector();
-			addChildNode(node, n);
+    private ASTNode prExpression() {
 
-		} else if (match(Token.L_PARENTHESIS)) {
+        ASTNode node = createNode(Token.EXPRESSION);
+        if (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET)) {
 
-			ASTNode nodeGroup = createNode(Token.GROUP);
+            ASTNode n = prSelector();
+            addChildNode(node, n);
 
-			consume(Token.L_PARENTHESIS);
-			ASTNode regex = prRegexp();
-			consume(Token.R_PARENTHESIS);
+        } else if (match(Token.L_PARENTHESIS)) {
 
-			addChildNode(nodeGroup, regex);
-			addChildNode(node, nodeGroup);
-		}
-		return node;
+            ASTNode nodeGroup = createNode(Token.GROUP);
 
-	}
+            consume(Token.L_PARENTHESIS);
+            ASTNode regex = prRegexp();
+            consume(Token.R_PARENTHESIS);
 
-	private ASTNode prSelector() {
+            addChildNode(nodeGroup, regex);
+            addChildNode(node, nodeGroup);
+        }
+        return node;
 
-		ASTNode node = createNode(Token.SELECTOR);
+    }
 
-		if (match(Token.CHAR, Token.ESCAPE)) {
-			ASTNode n = prSymbol();
-			addChildNode(node, n);
-		} else if (token == Token.L_BRACKET) {
-			ASTNode n = prRange();
-			addChildNode(node, n);
+    private ASTNode prSelector() {
 
-		}
-		return node;
-	}
+        ASTNode node = createNode(Token.SELECTOR);
 
-	private ASTNode prRange() {
+        if (match(Token.CHAR, Token.ESCAPE)) {
+            ASTNode n = prSymbol();
+            addChildNode(node, n);
+        } else if (token == Token.L_BRACKET) {
+            ASTNode n = prRange();
+            addChildNode(node, n);
 
-		ASTNode node = createNode(Token.RANGE);
+        }
+        return node;
+    }
 
-		consume(Token.L_BRACKET);
-
-		if (match(Token.ESCAPE, Token.CHAR)) {
+    private ASTNode prRange() {
 
-			ASTNode charRange = prCharRange();
-			addChildNode(node, charRange);
+        ASTNode node = createNode(Token.RANGE);
 
-		} else {
-			parseError(Token.CHAR, Token.ESCAPE);
-		}
-		consume("]");
+        consume(Token.L_BRACKET);
+
+        if (match(Token.ESCAPE, Token.CHAR)) {
 
-		return node;
-	}
+            ASTNode charRange = prCharRange();
+            addChildNode(node, charRange);
 
-	private ASTNode prCharRange() {
-		ASTNode node = createNode(Token.CHAR_RANGE);
+        } else {
+            parseError(Token.CHAR, Token.ESCAPE);
+        }
+        consume("]");
 
-		// evita un rango vacio
-		if (lexicalAnalyzer.getTokenValue().equals("]")) {
-			parseError(Token.CHAR, Token.ESCAPE);
-		}
-		/*
-		 * Se observa que en el bucle while se puede consumir cualquier carácter
-		 * excepto ']'. El léxico enviará tokens como L_PARENTHESIS o L_BRACKET
-		 * si huiera caracteres '(' y '[', pero en este caso se ignoran y se
-		 * tratan como CHAR.
-		 */
-		while (!lexicalAnalyzer.getTokenValue().equals("]")) {
-			addChildNode(node, Token.CHAR);
-			consume(token);
-		}
+        return node;
+    }
 
-		return node;
-	}
+    private ASTNode prCharRange() {
+        ASTNode node = createNode(Token.CHAR_RANGE);
 
-	private ASTNode prSymbol() {
+        // evita un rango vacio
+        if (lexicalAnalyzer.getTokenValue().equals("]")) {
+            parseError(Token.CHAR, Token.ESCAPE);
+        }
+        /*
+         * Se observa que en el bucle while se puede consumir cualquier carácter
+         * excepto ']'. El léxico enviará tokens como L_PARENTHESIS o L_BRACKET
+         * si huiera caracteres '(' y '[', pero en este caso se ignoran y se
+         * tratan como CHAR.
+         */
+        while (!lexicalAnalyzer.getTokenValue().equals("]")) {
+            addChildNode(node, Token.CHAR);
+            consume(token);
+        }
 
-		ASTNode node = null;
+        return node;
+    }
 
-		if (match(Token.CHAR)) {
-			node = createNode(token);
-			consume(Token.CHAR);
-		} else if (match(Token.ESCAPE)) {
-			node = createNode(token);
-			consume(Token.ESCAPE);
-		}
+    private ASTNode prSymbol() {
 
-		return node;
-	}
+        ASTNode node = null;
 
-	// fin de los métodos asociados a las producciones.
+        if (match(Token.CHAR)) {
+            node = createNode(token);
+            consume(Token.CHAR);
+        } else if (match(Token.ESCAPE)) {
+            node = createNode(token);
+            consume(Token.ESCAPE);
+        }
 
-	private void readNextToken() {
+        return node;
+    }
 
-		if (lexicalAnalyzer.readToken()) {
-			token = lexicalAnalyzer.getToken();
-		} else {
-			token = null;
-		}
-	}
+    // fin de los métodos asociados a las producciones.
 
-	private boolean match(Token... pToken) {
+    private void readNextToken() {
 
-		for (Token t : pToken) {
-			if (token == t) { // uso == por null-safe
-				return true;
-			}
-		}
-		return false;
-	}
+        if (lexicalAnalyzer.readToken()) {
+            token = lexicalAnalyzer.getToken();
+        } else {
+            token = null;
+        }
+    }
 
-	private Token consume(Token pToken) {
-		if (!token.equals(pToken)) {
-			parseError(pToken);
-		}
-		readNextToken();
-		return token;
-	}
+    private boolean match(Token... pToken) {
 
-	private Token consume(String c) {
-		String tokenValue = lexicalAnalyzer.getTokenValue();
-		if (!c.equals(tokenValue)) {
-			parseError(new String[] { c });
-		}
-		readNextToken();
-		return token;
-	}
+        for (Token t : pToken) {
+            if (token == t) { // uso == por null-safe
+                return true;
+            }
+        }
+        return false;
+    }
 
-	private ASTNode createNode(Token pToken) {
+    private Token consume(Token pToken) {
+        if (!token.equals(pToken)) {
+            parseError(pToken);
+        }
+        readNextToken();
+        return token;
+    }
 
-		ASTNode n = new ASTNode(pToken, lexicalAnalyzer.getIndex());
-		n.setValue(lexicalAnalyzer.getTokenValue());
-		return n;
-	}
+    private Token consume(String c) {
+        String tokenValue = lexicalAnalyzer.getTokenValue();
+        if (!c.equals(tokenValue)) {
+            parseError(new String[] { c });
+        }
+        readNextToken();
+        return token;
+    }
 
-	private ASTNode addChildNode(ASTNode pParent, Token pToken) {
-		ASTNode childNode = createNode(pToken);
-		pParent.addChild(childNode);
-		return childNode;
-	}
+    private ASTNode createNode(Token pToken) {
 
-	private void addChildNode(ASTNode root, ASTNode n) {
-		root.addChild(n);
-	}
+        ASTNode n = new ASTNode(pToken, lexicalAnalyzer.getIndex());
+        n.setValue(lexicalAnalyzer.getTokenValue());
+        return n;
+    }
 
-	private void parseError(Token... tokens) {
-		throw new SyntaxException(lexicalAnalyzer.getIndex(), tokens);
+    private ASTNode addChildNode(ASTNode pParent, Token pToken) {
+        ASTNode childNode = createNode(pToken);
+        pParent.addChild(childNode);
+        return childNode;
+    }
 
-	}
+    private void addChildNode(ASTNode root, ASTNode n) {
+        root.addChild(n);
+    }
 
-	private void parseError(String[] c) {
-		throw new SyntaxException(lexicalAnalyzer.getIndex(), c);
+    private void parseError(Token... tokens) {
+        throw new SyntaxException(lexicalAnalyzer.getIndex(), tokens);
 
-	}
+    }
 
-	private void parseError(String msg) {
-		throw new SyntaxException(lexicalAnalyzer.getIndex(), msg);
+    private void parseError(String[] c) {
+        throw new SyntaxException(lexicalAnalyzer.getIndex(), c);
 
-	}
+    }
+
+    private void parseError(String msg) {
+        throw new SyntaxException(lexicalAnalyzer.getIndex(), msg);
+
+    }
 
 }

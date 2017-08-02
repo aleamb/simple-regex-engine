@@ -10,41 +10,36 @@ import aleamb.regexengine.parser.LexicalAnalyzer;
 import aleamb.regexengine.parser.Parser;
 
 /**
- * Motor de regex para el canal #programacion de IRC-Hispano.
- * 
+ * Simple regex engine for a tiny subset of PCRE.
  * 
  */
 public class RegexEngine {
 
-	private final static Logger LOGGER = LoggerFactory
-			.getLogger(RegexEngine.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(RegexEngine.class);
 
-	/**
-	 * Compila la expresón regular para poder ser ejecutada.
-	 * 
-	 * @param regexExpr
-	 *            String con la expresión regular.
-	 * @return Expresión regular compilada.
-	 * @throws Exception
-	 *             En caso de fallo al compilar la expresión.
-	 */
-	public static Regex compile(String regexExpr) throws RegexException {
+    /**
+     * Compila la expresón regular para poder ser ejecutada.
+     * 
+     * @param regexExpr
+     *            String con la expresión regular.
+     * @return Expresión regular compilada.
+     * @throws Exception
+     *             En caso de fallo al compilar la expresión.
+     */
+    public static Regex compile(String regexExpr) throws RegexException {
 
-		LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(regexExpr);
-		Parser syntaxAnalyzer = new Parser(lexicalAnalyzer);
+        LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(regexExpr);
+        Parser syntaxAnalyzer = new Parser(lexicalAnalyzer);
 
-		ASTNode syntaxNodeTree = syntaxAnalyzer.analyze();
-		LOGGER.debug("Arbol sintáctico:\n graph g {\n{}\n};\n",
-				syntaxNodeTree.toString());
+        ASTNode syntaxNodeTree = syntaxAnalyzer.analyze();
+        LOGGER.debug("Syntax tree:\n graph g {\n{}\n};\n", syntaxNodeTree.toString());
 
-		Automaton nfa = AutomatonBuilder.generateFromAST(syntaxNodeTree);
-		LOGGER.debug("Autómata NO determinista:\n digraph afnd {\n{}\n};\n",
-				nfa.toString());
+        Automaton nfa = AutomatonBuilder.generateFromAST(syntaxNodeTree);
+        LOGGER.debug("Nondeterministic finite automaton:\n digraph afnd {\n{}\n};\n", nfa.toString());
 
-		Automaton dfa = AutomatonBuilder.generateDFAFromNFA(nfa);
-		LOGGER.debug("Autómata Determinista:\n digraph afnd {\n{}\n};\n",
-				dfa.toString());
-		return new Regex(dfa);
-	}
+        Automaton dfa = AutomatonBuilder.generateDFAFromNFA(nfa);
+        LOGGER.debug("Deterministic finite automaton:\n digraph afnd {\n{}\n};\n", dfa.toString());
+        return new Regex(dfa);
+    }
 
 }

@@ -8,36 +8,34 @@ import java.util.Arrays;
  */
 public class TransitionExclude extends TransitionBase implements Cloneable {
 
-	private char[] excluded;
+    private char[] excluded;
 
-	public TransitionExclude(char[] excluded) {
-		super();
-		this.excluded = excluded;
-		Arrays.sort(excluded);
-		String excludedStr = Arrays.toString(excluded);
-		setRepresentation("^"
-				+ excludedStr.substring(1).substring(0,
-						excludedStr.length() - 2));
-	}
+    public TransitionExclude(char[] excluded) {
+        super();
+        this.excluded = excluded;
+        Arrays.sort(excluded);
+        String excludedStr = Arrays.toString(excluded);
+        setRepresentation("^" + excludedStr.substring(1).substring(0, excludedStr.length() - 2));
+    }
 
-	public char[] getExcluded() {
-		return excluded;
-	}
+    public char[] getExcluded() {
+        return excluded;
+    }
 
-	@Override
-	public boolean match(char character) {
+    @Override
+    public boolean match(char character) {
 
-		if (excluded != null) {
+        if (excluded != null) {
 
-			return !(Arrays.binarySearch(excluded, character) >= 0);
-		} else {
-			return false;
-		}
-	}
+            return !(Arrays.binarySearch(excluded, character) >= 0);
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		TransitionExclude t = new TransitionExclude(excluded);
-		return t;
-	}
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        TransitionExclude t = new TransitionExclude(excluded);
+        return t;
+    }
 }

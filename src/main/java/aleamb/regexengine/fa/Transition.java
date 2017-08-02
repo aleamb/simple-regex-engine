@@ -18,31 +18,31 @@ package aleamb.regexengine.fa;
  */
 public interface Transition {
 
-	/**
-	 * Comprueba si la transición se cumple para un carácter de entrada.
-	 * 
-	 * @param character
-	 *            carácter a comprobar.
-	 * @return true si la transcióon cumple para esa entrada; false al
-	 *         contrario.
-	 */
-	boolean match(char character);
+    /**
+     * Comprueba si la transición se cumple para un carácter de entrada.
+     * 
+     * @param character
+     *            carácter a comprobar.
+     * @return true si la transcióon cumple para esa entrada; false al
+     *         contrario.
+     */
+    boolean match(char character);
 
-	/**
-	 * Establece el estado al que se dirige la transición.
-	 * 
-	 * @param pState
-	 *            Estado {@link State}
-	 */
-	void setNextState(State pState);
+    /**
+     * Establece el estado al que se dirige la transición.
+     * 
+     * @param pState
+     *            Estado {@link State}
+     */
+    void setNextState(State pState);
 
-	/**
-	 * Obtiene el estado al que lleva esta transición.
-	 * 
-	 * @return Estado destino. {@link State}
-	 */
-	State getNextState();
+    /**
+     * Obtiene el estado al que lleva esta transición.
+     * 
+     * @return Estado destino. {@link State}
+     */
+    State getNextState();
 
-	Object clone() throws CloneNotSupportedException;
+    Object clone() throws CloneNotSupportedException;
 
 }
