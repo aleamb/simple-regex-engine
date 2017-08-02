@@ -62,4 +62,67 @@ Bibliography used (in spanish):
 
 ## Usage
 
-## Architecture
+Regular expressions are stored in a *String* object and they must compiled before matching any input.
+
+Match results are returned at *RegexMatchResult* object that contains start position and match's length. Positions are zero indexed.
+
+Engine exhibits three main classes:
+
+* **RegexEngine.** Main class. Use **compile** method for compile a regex from String.
+* **Regex.** Class that models a compiled regex. Use **match** method for analyze input text. It returns true if regex match with input. Optionally **match** may receive a parameter *RegexMatchResult* with info about current matching and position for start to analyze text.
+* **RegexMatchResult.** This class stores information like at position and length of match found.
+
+### Example. Retrieve numbers from text.
+
+
+```
+import java.text.MessageFormat;
+
+import aleamb.regexengine.Regex;
+import aleamb.regexengine.RegexEngine;
+import aleamb.regexengine.RegexMatchResult;
+
+public class Example {
+
+    public static void main(String[] args) {
+
+         // input to check
+         String text = "kjdsk65sdksdk78odla98dasdf90dsakdsj";
+
+         // find numbers in text
+         Regex regex = RegexEngine.compile("[0-9]+");
+
+         // store match results
+         RegexMatchResult regexMatchResult = new RegexMatchResult();
+
+         // prepare input
+         char buffer[] = text.toCharArray();
+
+         // while found numbers...
+         while (regex.match(buffer, regexMatchResult)) {
+             int start = regexMatchResult.getMatchStartPosition();
+             int length = regexMatchResult.getMatchLength();
+             System.out.println(MessageFormat.format("Found match in position {0}. Text: {1}",
+                 start, text.substring(start, start + length)));
+
+             // restart from las ocurrence
+             regexMatchResult.setPosition(start + length);
+         }
+    }
+}
+```
+
+Output:
+
+Found match in position 5. Text: 65
+Found match in position 13. Text: 78
+Found match in position 19. Text: 98
+Found match in position 26. Text: 9
+
+## Documentation
+
+[Architecture](https://github.com/aleamb/simple-regex-engine/blob/master/doc/A)
+
+## License
+
+[MIT](https://github.com/aleamb/simple-regex-engine/blob/master/LICENSE.md)
