@@ -1,10 +1,10 @@
-package es.chathispano.canalprogramacion.regexengine.tests;
+package aleamb.regexengine.tests;
 
 import java.text.MessageFormat;
 
-import es.chathispano.canalprogramacion.regexengine.Regex;
-import es.chathispano.canalprogramacion.regexengine.RegexEngine;
-import es.chathispano.canalprogramacion.regexengine.RegexMatchResult;
+import aleamb.regexengine.Regex;
+import aleamb.regexengine.RegexEngine;
+import aleamb.regexengine.RegexMatchResult;
 
 public class Example {
 

@@ -1,6 +1,6 @@
-package es.chathispano.canalprogramacion.regexengine.tests;
+package aleamb.regexengine.tests;
 
-import es.chathispano.canalprogramacion.regexengine.RegexEngine;
+import aleamb.regexengine.RegexEngine;
 
 public class Wiki {
 	public static void main(String[] args) {

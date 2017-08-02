@@ -1,4 +1,4 @@
-package es.chathispano.canalprogramacion.regexengine.fa;
+package aleamb.regexengine.fa;
 
 /**
  * Interfaz común para las transiciones de un estado.

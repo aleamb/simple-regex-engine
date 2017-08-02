@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script para generar test unitarios para cada regex en regex.txt
+# Script to generate unit tests for each regex in regex.txt
 c=1
 while read line
 do
@@ -8,3 +8,4 @@ do
 	echo "@Test public void test$c() { compareMatchExecution(\"$regex\"); }"
 	c=`expr $c + 1`
 done
+

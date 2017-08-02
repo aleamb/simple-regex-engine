@@ -1,8 +1,8 @@
-package es.chathispano.canalprogramacion.regexengine;
+package aleamb.regexengine;
 
-import es.chathispano.canalprogramacion.regexengine.fa.Automaton;
-import es.chathispano.canalprogramacion.regexengine.fa.State;
-import es.chathispano.canalprogramacion.regexengine.fa.Transition;
+import aleamb.regexengine.fa.Automaton;
+import aleamb.regexengine.fa.State;
+import aleamb.regexengine.fa.Transition;
 
 /**
  * Representa una expresin regular compilada.

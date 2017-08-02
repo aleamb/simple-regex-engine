@@ -1,14 +1,14 @@
-package es.chathispano.canalprogramacion.regexengine.tests;
+package aleamb.regexengine.tests;
 
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import es.chathispano.canalprogramacion.regexengine.parser.ASTNode;
-import es.chathispano.canalprogramacion.regexengine.parser.LexicalAnalyzer;
-import es.chathispano.canalprogramacion.regexengine.parser.Parser;
-import es.chathispano.canalprogramacion.regexengine.parser.SyntaxException;
-import es.chathispano.canalprogramacion.regexengine.parser.LexerException;
+import aleamb.regexengine.parser.ASTNode;
+import aleamb.regexengine.parser.LexerException;
+import aleamb.regexengine.parser.LexicalAnalyzer;
+import aleamb.regexengine.parser.Parser;
+import aleamb.regexengine.parser.SyntaxException;
 
 public class TestParser {
 

@@ -1,6 +1,6 @@
-package es.chathispano.canalprogramacion.regexengine.parser;
+package aleamb.regexengine.parser;
 
-import es.chathispano.canalprogramacion.regexengine.RegexException;
+import aleamb.regexengine.RegexException;
 
 public class LexerException extends RegexException {
 

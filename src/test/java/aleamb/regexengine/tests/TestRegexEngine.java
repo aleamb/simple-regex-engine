@@ -1,4 +1,4 @@
-package es.chathispano.canalprogramacion.regexengine.tests;
+package aleamb.regexengine.tests;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,9 +11,9 @@ import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import es.chathispano.canalprogramacion.regexengine.Regex;
-import es.chathispano.canalprogramacion.regexengine.RegexEngine;
-import es.chathispano.canalprogramacion.regexengine.RegexMatchResult;
+import aleamb.regexengine.Regex;
+import aleamb.regexengine.RegexEngine;
+import aleamb.regexengine.RegexMatchResult;
 
 public class TestRegexEngine {
 

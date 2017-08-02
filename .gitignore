@@ -3,4 +3,7 @@
 .settings/
 .classpath
 .project
+.metadata/
 
+
+/target/

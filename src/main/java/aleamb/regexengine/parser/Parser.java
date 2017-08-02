@@ -1,4 +1,4 @@
-package es.chathispano.canalprogramacion.regexengine.parser;
+package aleamb.regexengine.parser;
 
 /**
  * Analizador sintáctico descendente-predictivo-recursivo para una Regex.

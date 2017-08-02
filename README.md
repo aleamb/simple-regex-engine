@@ -1,10 +1,6 @@
 # simple-regex-engine
 
-
 Simplified regex engine for educational purposes.
-
-## Table of Contents.
-
 
 ## Description.
 
@@ -121,7 +117,7 @@ Found match in position 26. Text: 9
 
 ## Documentation
 
-[Architecture](https://github.com/aleamb/simple-regex-engine/blob/master/doc/A)
+[Architecture](https://github.com/aleamb/simple-regex-engine/blob/master/doc/architecture.md)
 
 ## License
 

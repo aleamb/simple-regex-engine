@@ -1,4 +1,4 @@
-package es.chathispano.canalprogramacion.regexengine.fa;
+package aleamb.regexengine.fa;
 
 /**
  * Transición tipo vacía (epsilon) Fundamental para construir el AFND y

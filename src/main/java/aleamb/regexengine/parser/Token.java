@@ -1,4 +1,4 @@
-package es.chathispano.canalprogramacion.regexengine.parser;
+package aleamb.regexengine.parser;
 
 public enum Token {
 

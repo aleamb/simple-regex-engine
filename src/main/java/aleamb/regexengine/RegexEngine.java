@@ -1,13 +1,13 @@
-package es.chathispano.canalprogramacion.regexengine;
+package aleamb.regexengine;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import es.chathispano.canalprogramacion.regexengine.fa.Automaton;
-import es.chathispano.canalprogramacion.regexengine.fa.AutomatonBuilder;
-import es.chathispano.canalprogramacion.regexengine.parser.ASTNode;
-import es.chathispano.canalprogramacion.regexengine.parser.LexicalAnalyzer;
-import es.chathispano.canalprogramacion.regexengine.parser.Parser;
+import aleamb.regexengine.fa.Automaton;
+import aleamb.regexengine.fa.AutomatonBuilder;
+import aleamb.regexengine.parser.ASTNode;
+import aleamb.regexengine.parser.LexicalAnalyzer;
+import aleamb.regexengine.parser.Parser;
 
 /**
  * Motor de regex para el canal #programacion de IRC-Hispano.

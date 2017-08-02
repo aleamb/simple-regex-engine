@@ -1,4 +1,4 @@
-package es.chathispano.canalprogramacion.regexengine;
+package aleamb.regexengine;
 
 /**
  * 

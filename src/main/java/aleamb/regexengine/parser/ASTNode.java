@@ -1,4 +1,4 @@
-package es.chathispano.canalprogramacion.regexengine.parser;
+package aleamb.regexengine.parser;
 
 import java.util.ArrayList;
 import java.util.Collections;

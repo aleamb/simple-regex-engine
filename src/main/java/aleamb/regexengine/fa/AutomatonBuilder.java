@@ -1,15 +1,16 @@
-package es.chathispano.canalprogramacion.regexengine.fa;
+package aleamb.regexengine.fa;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import java.util.Queue;
 
-import es.chathispano.canalprogramacion.regexengine.RegexException;
-import es.chathispano.canalprogramacion.regexengine.parser.ASTNode;
-import es.chathispano.canalprogramacion.regexengine.parser.Token;
+import aleamb.regexengine.RegexException;
+import aleamb.regexengine.parser.ASTNode;
+import aleamb.regexengine.parser.Token;
+
+import java.util.Queue;
 
 /**
  * Constructor de autómata finito no determinista (AFND) a partir del árbol

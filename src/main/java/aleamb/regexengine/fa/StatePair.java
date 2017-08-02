@@ -1,4 +1,4 @@
-package es.chathispano.canalprogramacion.regexengine.fa;
+package aleamb.regexengine.fa;
 
 /**
  * Almacena un par de estados. Esta estructura será útil para ir construyendo el
