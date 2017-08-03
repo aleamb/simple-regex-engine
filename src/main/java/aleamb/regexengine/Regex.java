@@ -138,13 +138,7 @@ public class Regex {
     public String toString() {
 
         StringBuilder graphvizBuffer = new StringBuilder();
-
-        graphvizBuffer.append("digraph g {\n");
-
-        graphvizBuffer.append(finiteAutomaton);
-
-        graphvizBuffer.append("}\n");
-
+        graphvizBuffer.append("digraph g {\n").append(finiteAutomaton).append("}\n");
         return graphvizBuffer.toString();
     }
 
