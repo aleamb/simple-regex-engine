@@ -18,7 +18,7 @@ import aleamb.regexengine.fa.Transition;
  */
 public class Regex {
 
-    // Autmata Finito Determinista que modela la expresin regular.
+    // Deterministic finite automaton that models regular expression.
     private Automaton finiteAutomaton;
 
     Regex(Automaton pFiniteAutomaton) {
@@ -28,17 +28,14 @@ public class Regex {
     }
 
     /**
-     * Realiza la ejecucin de la regex sobre un buffer de caracteres.
+     * Executes compiled regex for an input char buffer.
      * 
-     * Si se le pasa un {@link RegexMatchResult}, se registrar sobre este objeto
-     * los datos de comienzo y longitud de la coincidencia. Adems, este mismo
-     * objeto determinar la posicin desde donde se comienza a leer del buffer.
+     * if {@link RegexMatchResult} is specified, method will be store the start position of match and its length into it.
+     * this param indicates to method where start matching too, thorough position attribute.
      * 
-     * @param buffer
-     * @param regexMatcher
-     *            {@link RegexMatchResult} que registra los datos del suconjunto
-     *            de caracteres que coincide con la regex.
-     * @return true si encuentra una coincidencia.
+     * @param buffer input buffer.
+     * @param regexMatcher {@link RegexMatchResult} that register subset of matching char data.
+     * @return true if match found.
      */
     public boolean match(char[] buffer, RegexMatchResult regexMatcher) {
 
