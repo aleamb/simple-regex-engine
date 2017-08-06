@@ -5,5 +5,5 @@
 .project
 .metadata/
 
-
+# maven rules
 /target/
