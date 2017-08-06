@@ -5,15 +5,15 @@ import aleamb.regexengine.fa.State;
 import aleamb.regexengine.fa.Transition;
 
 /**
- *   * Represents a regular expression compiled.   *   * In order to use a
- * regular expression, it must be compiled first.   * Later it will be applied
- * to a char buffer.   *   * The application of the regex will be done on the
- * entrance of complete form, it is   * Say, the characters will be read and on
- * each one the expression will be applied   * regular. If there is no
- * correspondence, try again from the   * Suitable position depending on the
- * characters processed previously.   *   * In case of correspondence, it
- * returns true and, if there is a   * {@link RegexMatchResult} registered, send
- * the current position, position of   * Start and length of the match.   *   *
+ * Compiled regular expression.
+ * 
+ * In order to use a regular expression it must be compiled first. Later it will be applied
+ * to a char buffer.
+ * 
+ * In case of correspondence, {@link Regex#match(char[], RegexMatchResult)} method returns true. 
+ * If pass an instance of {@link RegexMatchResult} in second parameter, matching will start from 
+ * indicated position.
+ * 
  *  
  */
 public class Regex {
@@ -39,36 +39,32 @@ public class Regex {
      */
     public boolean match(char[] buffer, RegexMatchResult regexMatcher) {
 
-        // flag que indica si continuar con la ejecuin de la regex en caso de
-        // fallo o acierto
         boolean stop = false;
 
         boolean match = false;
-        // indice que apunta al comienzo de la coincidencia.
+        // start of occurrence
         int matchStartPosition = -1;
 
-        // posicion actual
+        // current position
         int position = 0;
 
         if (regexMatcher != null) {
             position = regexMatcher.getPosition();
         }
 
-        // comienzo del automata
+        // inital state of deterministic automaton
         State currentState = finiteAutomaton.getInitialState();
 
-        // el autmata siempre quiere consumir caracteres
+        // While chars in buffer. Automaton is greedy
         while (currentState.hasTransitions() && (position < buffer.length) && !stop) {
 
             char c = buffer[position];
 
-            // enfrentar el carácter con la regex
+            // find the transition match character
             Transition transition = matchTransition((char) c, currentState);
 
-            if (transition == null) { // no hay coincidencia
+            if (transition == null) {
 
-                // si de todas formas estamos en un estado final, entonces hay
-                // match
                 if (currentState.isEnd()) {
                     match = true;
                     stop = true;
@@ -79,15 +75,15 @@ public class Regex {
 
                 } else {
 
-                    // reiniciar automata
+                    // reset automaton to start
                     currentState = finiteAutomaton.getInitialState();
                     position++;
-                    // no hay posicion de comienzo de region
+                    // clear start position of match register
                     matchStartPosition = -1;
                 }
 
             } else {
-                // coincide, avanzamos estado
+                // transition found, go to next state
                 currentState = transition.getNextState();
                 // registramos la posicion de comienzo de la coincidencia
 

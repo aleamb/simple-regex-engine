@@ -5,26 +5,22 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Clase auxiliar que agrupa un conjunto de estados y los trata como uno solo.
- * Esta estructra de datos es usada en el algoritmo subconjunto para transformar
- * un AFND a un AFD
  * 
+ * Utility class that groups a set of states for to deal them like only one.
  * 
+ * This structure is used in powerset algorithm for transform nodeterministic
+ * finite automaton to deterministic finite automaton.
  */
 class SubSetState {
 
     private boolean mark;
-    // estados subconjunto de estado
+
+    // subset of states.
     private Set<State> states = new HashSet<State>();
-    /*
-     * Relación unívoca de un estado del autómata con el conjutno de estados.
-     * Este es el estado que finalmente irá al objeto Automaton
-     */
+
+    // state that groups to the subset
     private State state = new State();
-    /*
-     * El id de un estado de este tipo será construído como una cadena que
-     * concatena los id's de la lista de estados que lo forman.
-     */
+
     private String id;
 
     public SubSetState(Set<State> states) {

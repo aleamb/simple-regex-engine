@@ -23,24 +23,33 @@ import java.util.Set;
  * algoritmo de transformación de un atómata no determinista a uno determinista.
  * 
  * 
+ * Finite automaton (it may be deterministic or not) result of parsing regular
+ * expression.
+ * 
+ * This object keep a first state reference of the automaton. Rest states are
+ * obtained through of transitions.
+ * 
+ * This object also contains a list of all type of transitions for the
+ * automaton. This is for store complete alphabet that automaton manages. This
+ * list is used for transform from nodeterministic automaton to deterministic
+ * automaton using Powerset construction algorithm.
+ * 
  */
 public class Automaton {
 
-    // número de estados del autómata
+    // number of automaton states.
     private int stateCount;
 
-    // estado inicial. Los restantes estados son enlazados mediante sus
-    // transiciones.
+    // Initial state. Rest os states are linked through transitions.
     private State initialState;
 
-    // ultimo estado a�adido
+    // last added state
     private State lastState;
 
-    // lista de los tipos de transición que usa el autómata. Esto puede servir
-    // como alfabeto.
+    // list that stores all state types. This is used as alphabet.
     private Set<Transition> alphabet;
 
-    // es conveniente guardar una lista lineal de los estados.
+    // Lineal list that stores all states. Used for optimization.
     private List<State> states;
 
     public Automaton() {
@@ -117,8 +126,8 @@ public class Automaton {
     private void build() {
 
         /*
-         * Recorrido en amplitud para contabilizar y otorgarles id's a los
-         * estados
+         * Depth-first traversing for count and give identifiers to the states
+         * 
          */
         Queue<State> stateQueue = new LinkedList<State>();
 
@@ -132,7 +141,7 @@ public class Automaton {
 
             if (state.getTransitions() != null) {
                 for (Transition t : state.getTransitions()) {
-                    // añadir transición para formar el alfabeto del autómata
+                    // add transition for build automaton's alphabet
                     alphabet.add(t);
                     State childState = t.getNextState();
                     if (childState.getId() == -1) {

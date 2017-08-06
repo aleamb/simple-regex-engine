@@ -1,22 +1,9 @@
 package aleamb.regexengine.parser;
 
 /**
- * Analizador sintáctico descendente-predictivo-recursivo para una Regex.
- * Codificado a partir de la gramática BNF ampliada.
+ * Parser recursive-descent-parser implemented from BNF:
  * 
- * La entrada será el conjunto de tokens obtenidos mediante el analizador
- * léxico. La salida será un árbol sintáctico de la expresión regular.
- * 
- * Cada método corresponde a una producción de la gramática. Su función es leer
- * los tokens que le correspondan y lanzar error en el monmento en que no llegue
- * el token esperado.
- * 
- * Cada producción construye su correspondiente rama en el árbol sintáctico. Las
- * propias llamadas recursivas del analizador unen unas ramas con otras de forma
- * adecuada.
- * 
- * 
- * Gramática:
+ * Grammar:
  * 
  * <regexp> ::= <quantified_expression> { <quantified_expression> } <regex>
  * 
@@ -34,7 +21,7 @@ package aleamb.regexengine.parser;
  * 
  * <symbol> ::= <char> | <escape>
  * 
- * <char> ::= Caracteres imprimibles excepto '(' | ')' | '*' | '+' | '?' | '[' |
+ * <char> ::= Printable charcaters except '(' | ')' | '*' | '+' | '?' | '[' |
  * '\' | '|'
  * 
  * <escape_char> ::= '(' | ')' | '*' | '+' | '?' | '['| '\' | '|' <escape>
@@ -43,8 +30,8 @@ package aleamb.regexengine.parser;
  * <quantifier> ::= '*'| '+' | '?'
  * 
  * 
- * La gramática dada no es LL(1), se necesita un pequeño análisis extra para
- * resolver la ambigüedad de la primera producción.
+ * Gramar is not LL(1), first production is ambiguous. Is neccesary semantic
+ * analysis in that case.
  * 
  */
 
@@ -59,26 +46,24 @@ public class Parser {
 
     public ASTNode analyze() {
 
-        // un símbolo adelantado
+        // start symbol (forwarding symbol)
         readNextToken();
 
         if (token == null) {
             throw new SyntaxException("Regex vacía.");
         }
-        // nodo raíz del árbol sintáctico.
+        // root node of syntax tree
         ASTNode root = createNode(Token.ROOT);
 
-        // entramos por la producción principal. A partir de ahí la recursión de
-        // producciones consumirá los tokens.
+        // main production Rest of analysis is recursive.
         ASTNode n = prRegexp();
 
-        // análisis sintáctico terminado. Añadir al nodo raiz el nodo padre del
-        // árbol sintáctico.
+        // parsing finished. Add root of abstract syntax tree to root node.
         addChildNode(root, n);
 
-        // no debería haber más tokens si el parseo ha sido correcto.
+        // it should not more tokens.
         if (token != null) {
-            parseError("Expresión no balanceada.");
+            parseError("Not balanced expression");
         }
 
         return root;
@@ -88,9 +73,7 @@ public class Parser {
     private ASTNode prRegexp() {
         ASTNode node = createNode(Token.REGEXP);
 
-        // al menos un quantified_expression. Es necesario verificar el primero
-        // y si no hay, entonces es un error sintáctico
-
+        // at least a quantified expression.
         if (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS)) {
             ASTNode n = prQuantifiedExpression();
             addChildNode(node, n);
@@ -98,15 +81,15 @@ public class Parser {
             parseError(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS);
         }
 
-        // seguido de cero o más.
+        // next zero or more
         while (match(Token.CHAR, Token.ESCAPE, Token.L_BRACKET, Token.L_PARENTHESIS)) {
             ASTNode n = prQuantifiedExpression();
             addChildNode(node, n);
         }
-        // ahora un <regex>
+        // now a <regex>
         ASTNode regexNode = prRegex();
 
-        // que puede ser palabra vacia
+        // it may be empty word
         if (regexNode != null) {
             addChildNode(node, regexNode);
         }
@@ -128,8 +111,6 @@ public class Parser {
             node = null;
         }
 
-        // o palabra vacia
-
         return node;
     }
 
@@ -137,11 +118,11 @@ public class Parser {
 
         ASTNode node = createNode(Token.QUANTIFIED_EXPR);
 
-        // debe venir una expression
+        // must receive a expression
         ASTNode n = prExpression();
         addChildNode(node, n);
 
-        // opcionalmente puede venir un cuantificador
+        // optionally read a quantifier
         if (match(Token.QUANTIFIER)) {
             addChildNode(node, Token.QUANTIFIER);
             consume(Token.QUANTIFIER);
@@ -209,16 +190,11 @@ public class Parser {
     private ASTNode prCharRange() {
         ASTNode node = createNode(Token.CHAR_RANGE);
 
-        // evita un rango vacio
+        // prevent empty state
         if (lexicalAnalyzer.getTokenValue().equals("]")) {
             parseError(Token.CHAR, Token.ESCAPE);
         }
-        /*
-         * Se observa que en el bucle while se puede consumir cualquier carácter
-         * excepto ']'. El léxico enviará tokens como L_PARENTHESIS o L_BRACKET
-         * si huiera caracteres '(' y '[', pero en este caso se ignoran y se
-         * tratan como CHAR.
-         */
+
         while (!lexicalAnalyzer.getTokenValue().equals("]")) {
             addChildNode(node, Token.CHAR);
             consume(token);
@@ -242,7 +218,7 @@ public class Parser {
         return node;
     }
 
-    // fin de los métodos asociados a las producciones.
+    // end productions
 
     private void readNextToken() {
 
@@ -256,7 +232,7 @@ public class Parser {
     private boolean match(Token... pToken) {
 
         for (Token t : pToken) {
-            if (token == t) { // uso == por null-safe
+            if (token == t) { // compare refs
                 return true;
             }
         }

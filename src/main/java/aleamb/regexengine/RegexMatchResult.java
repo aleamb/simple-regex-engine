@@ -5,11 +5,10 @@ package aleamb.regexengine;
  * Usado por {@link Regex#match(char[], RegexMatchResult)} para registrar la
  * posición de una coincidencia.
  * 
- * También pude ser usado para indicar a
- * {@link Regex#match(char[], RegexMatchResult)} desde donde comenzar la lectura
- * del buffer. Por defecto estará establecido a cero.
+ * Used by {@link Regex#match(char[], RegexMatchResult)} for to register the
+ * position of ocurrence.
  * 
- * 
+ * Can be used too for to point out the position from where to read buffer.
  */
 
 public class RegexMatchResult {

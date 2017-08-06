@@ -3,29 +3,29 @@ package aleamb.regexengine.parser;
 import java.util.Arrays;
 
 /**
- * Analizador léxico para el motor de regex.
+ * Lexer for regex engine.
  * 
  */
 public class LexicalAnalyzer {
 
-    // expresión regular dada
+    // regular expression
     private String regex;
-    // posición del analizador léxico
+    // lexer position
     private int index;
-    // ultimo token construído.
+    // last token build
     private Token token = null;
-    // último carácter leído
+    // last character read.
     private char character;
     // valor del token.
     private String tokenValue;
 
-    // caracteres ignorados por el analizador lexico
+    // ignored characters
     private char[] ignoredChars = { '\t', ' ' };
 
-    // caracteres de escape permitidos (ordenados)
+    // set of permitted chars for to scape
     private char[] escape_chars = { '(', ')', '*', '+', '-', '.', '?', '[', '\\', ']', '^', 's', 't', '|' };
 
-    // valor de los caracteres de escape (ordenados)
+    // value for scape chars.
     private char[] escape_chars_value = { '(', ')', '*', '+', '-', '.', '?', '[', '\\', ']', '^', ' ', '\t', '|' };
 
     public LexicalAnalyzer(String pRegex) {
@@ -33,7 +33,7 @@ public class LexicalAnalyzer {
         Arrays.sort(escape_chars);
 
         if (pRegex == null) {
-            throw new IllegalArgumentException("Expresion regular nula.");
+            throw new IllegalArgumentException("Empty regex");
         }
         regex = pRegex;
         index = 0;
@@ -74,7 +74,7 @@ public class LexicalAnalyzer {
                     token = Token.CHAR;
                     tokenValue = String.valueOf(character);
                 } else {
-                    lexError("Carácter no válido");
+                    lexError("Charecter not valid.");
                 }
             }
         }
@@ -102,8 +102,8 @@ public class LexicalAnalyzer {
     }
 
     /*
-     * Detectada secuencia de escape. Verificar que el siguiente caracter
-     * pertenece al conjunto de caracteres que pueden escaparse.
+     * Detected scape sequence. Check is character is in set of permitted
+     * character for to scape.
      */
     private void verifyEscapeCharacters() {
 
@@ -113,10 +113,10 @@ public class LexicalAnalyzer {
                 token = Token.ESCAPE;
                 tokenValue = String.valueOf(escape_chars_value[charIndex]);
             } else {
-                lexError("Carácter " + character + " no forma parte de los caracteres de escape.");
+                lexError("Character " + character + " can not be scaped");
             }
         } else {
-            lexError("Se esperaba " + Arrays.toString(escape_chars));
+            lexError(" " + Arrays.toString(escape_chars));
         }
     }
 

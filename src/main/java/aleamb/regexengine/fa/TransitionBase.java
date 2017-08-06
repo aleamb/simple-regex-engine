@@ -1,5 +1,9 @@
 package aleamb.regexengine.fa;
 
+/**
+ * Base Transition class for common operations.
+ */
+
 public abstract class TransitionBase implements Transition, Comparable<Transition> {
 
     private State nextState;

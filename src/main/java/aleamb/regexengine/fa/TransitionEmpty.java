@@ -1,8 +1,7 @@
 package aleamb.regexengine.fa;
 
 /**
- * Transición tipo vacía (epsilon) Fundamental para construir el AFND y
- * convertirlo a AFD
+ * Empty transition. Used in nondeterministic finite automaton.
  */
 public class TransitionEmpty extends TransitionBase implements Cloneable {
 

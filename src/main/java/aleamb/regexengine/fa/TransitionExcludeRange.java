@@ -1,7 +1,7 @@
 package aleamb.regexengine.fa;
 
 /**
- * Transición usada para ^[a-z]
+ * Transition for ^[a-z]
  * 
  */
 public class TransitionExcludeRange extends TransitionBase implements Cloneable {

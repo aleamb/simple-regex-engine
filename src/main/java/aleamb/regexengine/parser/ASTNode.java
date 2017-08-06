@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Nodo para el árbol sintáctico.
+ * Syntax tree node
  * 
  */
 public class ASTNode {
@@ -66,7 +66,7 @@ public class ASTNode {
     }
 
     /**
-     * Representación del nodo en Graphviz/DOT
+     * Graphviz/DOT
      */
     @Override
     public String toString() {

@@ -6,26 +6,28 @@ Simplified regex engine for educational purposes.
 
 simple-regex-engine is a engine implemented in Java to parse a tiny (very, very tiny) subset of PCRE. This implementation is only for educational purposes.
 
-This file describes architecture of engine and algorimths and strategies implemented. Basically the engine parses regular expression through a recursive-descent parser and builds a deterministic finite automaton. Then execute that automaton for the input .
+This file describes architecture of engine and algorimths and strategies implemented. Basically the engine parses regular expression through a recursive-descent parser and builds a deterministic finite automaton. Then execute that automaton for the input.
 
-### Características regexp soportadas.
+### Syntax supported.
 
 
-| x        | a character                               |
-|----------|-------------------------------------------|
-| \t       | Tab character                             |
-| \s       | White space                               |
-| [abc]    | One of characters inside [ ]              |
-| [a-z]    | character range 'a' to 'z'                |
-| [a-zA-Z] | character range 'a' to 'z' and 'A' to 'Z' |
-| *        | Matches between zero and unlimited times  |
-| +        | Maches between one and unlimited times    |
-| ?        | Maches between zero and one times         |
-| \|        | OR Alternative                            |
-| \x       | Esscape character 'x'                     |
-| .        | Any imprimible character (Unicode)        |
+| x        | a character                                         |
+|----------|-----------------------------------------------------|
+| \t       | Tab character                                       |
+| \s       | White space                                         |
+| [abc]    | One of characters inside [ ]                        |
+| ^[abc]   | Any character except characters inside [ ]          |
+| ^[a-z]   | Any character except range of characters inside [ ] |
+| [a-z]    | character range 'a' to 'z'                          |
+| [a-zA-Z] | character range 'a' to 'z' and 'A' to 'Z'           |
+| *        | Matches between zero and unlimited times            |
+| +        | Matches between one and unlimited times             |
+| ?        | Matches between zero and one times                  |
+| \|       | OR Alternative                                      |
+| \x       | Escape character 'x'                                |
+| .        | Any imprimible character (Unicode)                  |
 
-Orden de precedencia (de mayor a menor)
+Order of precedence (descending precedence order)
 
 1. (EXPR) Group.
 2. 'x' (character 'x')

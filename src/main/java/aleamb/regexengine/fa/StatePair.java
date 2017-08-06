@@ -1,8 +1,7 @@
 package aleamb.regexengine.fa;
 
 /**
- * Almacena un par de estados. Esta estructura será útil para ir construyendo el
- * grafo que representa el autómata.
+ * Store state pair. This class is useful for build graph.
  */
 class StatePair {
 

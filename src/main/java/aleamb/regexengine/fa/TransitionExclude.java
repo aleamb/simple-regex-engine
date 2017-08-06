@@ -3,7 +3,7 @@ package aleamb.regexengine.fa;
 import java.util.Arrays;
 
 /**
- * Transición usada para ^c1c2c3...
+ * Transition for ^[c1c2c3]...
  * 
  */
 public class TransitionExclude extends TransitionBase implements Cloneable {

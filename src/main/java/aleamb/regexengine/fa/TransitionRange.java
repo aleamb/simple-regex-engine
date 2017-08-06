@@ -1,7 +1,7 @@
 package aleamb.regexengine.fa;
 
 /**
- * Transición usada para [c1-c2]
+ * Transition for [c1-c2]
  * 
  */
 public class TransitionRange extends TransitionBase implements Cloneable {

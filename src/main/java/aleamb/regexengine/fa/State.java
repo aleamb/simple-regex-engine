@@ -6,18 +6,18 @@ import java.util.List;
 
 /**
  * 
- * Estado para un autómata finito.
+ * Automaton's state.
  * 
  */
 public class State implements Comparable<State> {
 
-    // conjunto de transiciones para este estado
+    // transitions set for this state.
     private List<Transition> transitions;
 
-    // indica que es inicial
+    // this flag indicates initial state.
     private boolean initial = false;
 
-    // indica que es final o de aceptación
+    // thos flag indicates final state
     private boolean end = false;
 
     private int id = -1;
@@ -31,7 +31,7 @@ public class State implements Comparable<State> {
         id = pId;
     }
 
-    // conecta un estado con otro por mediao de una transición.
+    // links states through of a transition
     public void connect(Transition transition, State pState) {
         transition.setNextState(pState);
         transitions.add(transition);
@@ -98,7 +98,7 @@ public class State implements Comparable<State> {
     }
 
     /**
-     * Describe el estado con Graphviz
+     * Serialize state to Graphviz
      */
     @Override
     public String toString() {

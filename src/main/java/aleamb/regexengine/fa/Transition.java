@@ -1,45 +1,40 @@
 package aleamb.regexengine.fa;
 
 /**
- * Interfaz común para las transiciones de un estado.
  * 
- * Una transición puede ser del tipo:
+ * Common interface for state transitions.
+ * 
+ * There are four transition types:
  * 
  * <ul>
- * <li>Transición vacía {@link TransitionEmpty} para autómatas finitos no
- * deterministas.</li>
- * <li>Transición de exclusión de un conjunto de caracteres
- * {@link TransitionExclude}</li>
- * <li>Transición de exclusión de rango de caracteres.
- * {@link TransitionExcludeRange}</li>
- * <li>Transicion de rango de caracateres. {@link TransitionExcludeRange}</li>
+ * <li>Empty transition {@link TransitionEmpty} Used in nondeterministic finite automaton.</li>
+ * <li>Transition for exclude a set of characters. {@link TransitionExclude}</li>
+ * <li>Transition for exclude a character range{@link TransitionExcludeRange}</li>
+ * <li>Transition for character range {@link TransitionRange}</li>
  * 
  * </ul>
  */
 public interface Transition {
 
     /**
-     * Comprueba si la transición se cumple para un carácter de entrada.
+     * Check if transition is fulfilled for a character.
      * 
      * @param character
-     *            carácter a comprobar.
-     * @return true si la transcióon cumple para esa entrada; false al
-     *         contrario.
+     * @return true if transition fulfills.
      */
     boolean match(char character);
 
     /**
-     * Establece el estado al que se dirige la transición.
+     * Next automaton's state for this transition.
      * 
-     * @param pState
-     *            Estado {@link State}
+     * @param pState {@link State}
      */
     void setNextState(State pState);
 
     /**
-     * Obtiene el estado al que lleva esta transición.
+     * Get destination state of this transition.
      * 
-     * @return Estado destino. {@link State}
+     * @return Destination state. {@link State}
      */
     State getNextState();
 
