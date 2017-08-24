@@ -256,3 +256,73 @@ Transition interface is implemented by next classes, each or them represents a r
 - *TransitionExclude.* [^abcd...] transition.
 - *TransitionExcludeRange.* [^a-z] transition.
 - *TransitionRange.* [a-z] transition and char selector. For this second case simply states that the beginning and end of the range is the same character.
+
+*Automaton* class will contains a reference to the first state as well as the list of transitions and the list of states. Keeping the two lists is useful when the algorithm that will reduce the NDFA to a deterministic automaton is executed.
+
+##### Bulding NDFA
+
+A regular language can be analyzed by a non-deterministic finite automaton, so the next phase of the regexp engine is build this automaton.
+
+To build an NDFA from a regular expression **Thompson's algorithm** can be used. It associates each **minimal regular expression with a non-deterministic finite automaton.**
+
+Let's see the NDFA for each regex rule in this engine:
+
+1. 'character' regex (or minimal selector)
+
+![](ndfa1.png)
+
+2. For a regex with '+' quantifier (for example *a+*)
+
+![](ndfa2.png)
+
+3.  For a regex with '*' quantifier (for example *a**)
+
+![](ndfa3.png)
+
+4. For a '?' regex,  (for example *a?*)
+
+![](ndfa4.png)
+
+5. For regex 'R1|R2' like abc|def
+
+![](ndfa5.png)
+
+6. For regex of kind ab(c|d)ef
+
+![](ndfa6.png)
+
+The ranges are still selectors, so the generated NDFA are equals to those of a single character. The fundamental difference is that for *[a-z]* range it is not optimal to create 26 transitions, so a transition type representing ranges has been created (class *TransitionRange*)
+
+For example, NDFA for regex *[a-z]+*
+
+![](ndfa7.png)
+
+The class that builds NFDA is *AutomatonBuilder*. The method *generateNFA(ASTNode node)* generates this NFDA from root node of syntax tree.
+
+#### Building DFA and associate to regex runner.
+
+To implement a NDFA runner is quite cumbersome. Is  better convert NDFA to equivalent DFA. For this *Powerset construction algorithm* is used. Class *Automaton* has method *generateDFA* for this.
+
+Once generated, DFA is assigned to an instance of *Regex* object and used for matching inputs.
+
+Next code shows overview òf all process explained above:
+
+```java
+public static Regex compile(String regexExpr) throws RegexException {
+
+        LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(regexExpr);
+        Parser syntaxAnalyzer = new Parser(lexicalAnalyzer);
+
+        ASTNode syntaxNodeTree = syntaxAnalyzer.analyze();
+        LOGGER.debug("Syntax tree:\n graph g {\n{}\n};\n", syntaxNodeTree.toString());
+
+        Automaton nfa = AutomatonBuilder.generateFromAST(syntaxNodeTree);
+        LOGGER.debug("Nondeterministic finite automaton:\n digraph ndfa {\n{}\n};\n", nfa.toString());
+
+        Automaton dfa = AutomatonBuilder.generateDFAFromNFA(nfa);
+        LOGGER.debug("Deterministic finite automaton:\n digraph dfa {\n{}\n};\n", dfa.toString());
+        return new Regex(dfa);
+}
+```
+
+There is a log4j.properties file for output generated graphs in Graphviz format if log level is set to DEBUG. This is useful for generating images of internal structure of automatons or syntax tree.
