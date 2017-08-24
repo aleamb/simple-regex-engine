@@ -239,7 +239,7 @@ Notice that production returns its ASTNode instance and this is added to current
 
 Next figure is syntax tree for ab+ regex.
 
-![syntax tree for ab+ regex](regex_ast_ab_plus.png "syntax tree for ab+ regex")
+![syntax tree for ab+ regex](regex_ab_plus.png "syntax tree for ab+ regex")
 
 
 #### Automatons.
