@@ -95,10 +95,10 @@ public class RegexEngine {
         LOGGER.debug("Syntax tree:\n graph g {\n{}\n};\n", syntaxNodeTree.toString());
 
         Automaton nfa = AutomatonBuilder.generateFromAST(syntaxNodeTree);
-        LOGGER.debug("Nondeterministic finite automaton:\n digraph afnd {\n{}\n};\n", nfa.toString());
+        LOGGER.debug("Nondeterministic finite automaton:\n digraph ndfa {\n{}\n};\n", nfa.toString());
 
         Automaton dfa = AutomatonBuilder.generateDFAFromNFA(nfa);
-        LOGGER.debug("Deterministic finite automaton:\n digraph afnd {\n{}\n};\n", dfa.toString());
+        LOGGER.debug("Deterministic finite automaton:\n digraph dfa {\n{}\n};\n", dfa.toString());
         return new Regex(dfa);
     }
 
