@@ -232,10 +232,10 @@ public class TestRegexEngine {
 		TestResult result1 = executeJavaRegex(regexExpression);
 		TestResult result2 = executeMyRegexEngine(regexExpression);
 
-		assertEquals("Match no coincide", result1.isMatch(), result2.isMatch());
-		assertEquals("No coincide la posicion de comienzo del match",
+		assertEquals("No match", result1.isMatch(), result2.isMatch());
+		assertEquals("start match position",
 				result1.getStartPosition(), result2.getStartPosition());
-		assertEquals("No coincide longitud de match", result1.getLength(),
+		assertEquals("match length", result1.getLength(),
 				result2.getLength());
 
 	}
