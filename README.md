@@ -112,14 +112,12 @@ public class Example {
 
 Output:
 
+```
 Found match in position 5. Text: 65
-
 Found match in position 13. Text: 78
-
 Found match in position 19. Text: 98
-
 Found match in position 26. Text: 9
-
+```
 
 ## Documentation
 
