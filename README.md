@@ -4,7 +4,7 @@ Simplified regex engine for educational purposes.
 
 ## Description.
 
-simple-regex-engine is a engine implemented in Java to parse a tiny (very, very tiny) subset of PCRE. This implementation is only for educational purposes.
+simple-regex-engine is a regex engine implemented in Java which supports a tiny (very, very tiny) subset of PCRE. This implementation is only for educational purposes.
 
 This file describes architecture of engine and algorimths and strategies implemented. Basically the engine parses regular expression through a recursive-descent parser and builds a deterministic finite automaton. Then execute that automaton for the input.
 
@@ -113,9 +113,13 @@ public class Example {
 Output:
 
 Found match in position 5. Text: 65
+
 Found match in position 13. Text: 78
+
 Found match in position 19. Text: 98
+
 Found match in position 26. Text: 9
+
 
 ## Documentation
 
