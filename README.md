@@ -6,7 +6,7 @@ Simplified regex engine for educational purposes.
 
 simple-regex-engine is a regex engine implemented in Java which supports a tiny (very, very tiny) subset of PCRE. This implementation is only for educational purposes.
 
-This file describes architecture of engine and algorimths and strategies implemented. Basically the engine parses regular expression through a recursive-descent parser and builds a deterministic finite automaton. Then execute that automaton for the input.
+This engine parses regular expression through a recursive-descent parser and builds a deterministic finite automaton. Then execute that automaton for the input.
 
 ### Syntax supported.
 
