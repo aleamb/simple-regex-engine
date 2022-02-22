@@ -111,9 +111,7 @@ Method *readCharacter* ignore tabs and spaces.
 
 #### Parser
 
-Parser is a descent-recursive-parser type.
-
-Este tipo de parsers son muy comunes y fáciles de implementar. Para poder codificarlos con facilidad es muy conveniente que la gramática dada sea LL(1), ya que leyendo sólo un token por adelantado omitimos la necesidad de "volver hacia atrás" en caso de que llegue un token que no corresponde con la producción que se analiza en ese momento.
+The parser is a descent-recursive-parser type.
 
 This kind of parser are easy to implement and they are more common. For an easy implementation is very important that grammar are of type LL(1) since reading an only forward-token we avoid problems as backtracking, which is hard to implement.
 
