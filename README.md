@@ -125,4 +125,4 @@ Found match in position 26. Text: 9
 
 ## License
 
-[MIT](https://github.com/aleamb/simple-regex-engine/blob/master/LICENSE.md)
+[MIT](https://github.com/aleamb/simple-regex-engine/blob/master/LICENSE)
